@@ -7,23 +7,29 @@ Run demo.html to see it in action.
 To get started:
 
 Import jquery & the dwp-cookie-consent files (one javaScript & one CSS stylesheet):
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
-  <script src="./js/dwp-cookie-consent.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
+    <script src="./js/dwp-cookie-consent.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+          (NB: jquery-ui is only needed if the "slide" parameter is used)
 
 Then add the dwp-consent class to any HTML element:
-  <div class=”dwp-consent”>
+    <div class=”dwp-consent”>
 
 The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "cookiesPage" in the element:
-  <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
+    <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
+
+By default, the pop-up is attached to the top centre of the page. To have it slide in from the left, use the "slide" parameter:
+    <div class="dwp-consent slide">
 
 ---------------------------------
 
 This software handles one cookie ("DWP") with an object containing two parameters ("useCookies" & "analytics"):
-  DWP={"useCookies":false,"analytics":false}
+    DWP={"useCookies":false,"analytics":false}
 
-  "useCookies" indicates whether or not the user has given us permission to use cookies.
-  "analytics" indicates wheteher or not the user has given us permission to use their data for analytic purposes.
+"useCookies" indicates whether or not the user has given us permission to use cookies.
+"analytics" indicates wheteher or not the user has given us permission to use their data for analytic purposes.
 
 ---------------------------------
 

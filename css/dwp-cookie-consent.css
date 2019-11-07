@@ -7,41 +7,24 @@
     text-align: center;
     display: none;
     z-index: 9999999;
-    margin-left: 300px;
-    width: 50%;
+   
 }
 
-.dwp-consent-container-top,
-.dwp-consent-container-fixedtop {
+.dwp-consent-container-top {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+     margin-left: 300px;
+    width: 50%;
 }
 
-.dwp-consent-container-fixedtop {
+.dwp-consent-container-left {
     position: fixed;
-}
-
-.dwp-consent-container-bottom {
-    position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-}
-
-.dwp-consent-container-bottomleft {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    width: 300px;
-}
-
-.dwp-consent-container-bottomright {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 300px;
+    width: 30%;
 }
 
 

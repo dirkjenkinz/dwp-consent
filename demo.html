@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
     <script src="./js/dwp-cookie-consent.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <style>
         body {
@@ -14,7 +15,7 @@
         }
         
         .thingy {
-            margin: 600px 0 0 100px;
+            margin: 600px 0 0 600px;
             font-size: 120%;
         }
         
@@ -22,7 +23,8 @@
             font-size: 80%;
         }
         
-        #clear, #reload {
+        #clear,
+        #reload {
             font-size: 140%;
             background: black;
             color: white;
@@ -34,36 +36,29 @@
 </head>
 
 <body>
-  <!-- cookiesPage defaults to https://www.gov.uk/help/cookie-details -->
-<div class="thingy dwp-consent" cookiesPage="">
-    Cookies:
-    <span id="show-cookies"></span>
-</div>
-<br>
-<div>
-    <button id="clear">CLEAR DWP COOKIES</button>
-    <br><br>
-    <button id="reload">RELOAD PAGE</button>
-</div>
+    <!-- cookiesPage defaults to https://www.gov.uk/help/cookie-details -->
+    <div class="thingy dwp-consent slide">
+        Cookies: <span id="show-cookies"></span>
+        <br>
+        <button id="clear">CLEAR DWP COOKIES</button>
+        <br><br>
+        <button id="reload">RELOAD PAGE</button>
+    </div>
 
-<script>
-    $(document).ready(() => {
-        let cookies = document.cookie;
-        $(`#show-cookies`).text(cookies);
-        $(`#clear`).click(() => {
-            document.cookie = "DWP=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    <script>
+        $(document).ready(() => {
             let cookies = document.cookie;
             $(`#show-cookies`).text(cookies);
-        }),
-        $(`#reload`).click(()=> {
-          console.log('yeah!!!')
-          location.reload();
+            $(`#clear`).click(() => {
+                    document.cookie = "DWP=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                    let cookies = document.cookie;
+                    $(`#show-cookies`).text(cookies);
+                }),
+                $(`#reload`).click(() => {
+                    location.reload();
+                })
         })
-    })
-</script>
-
+    </script>
 </body>
 
-
-
-</html>=
+</html>
