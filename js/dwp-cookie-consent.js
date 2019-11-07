@@ -164,7 +164,7 @@ const saveAndClose = () => {
       if ($(`#use-cookies`).prop(`checked`)) {
         $(`#use-cookies-text`).text(DISALLOW_COOKIES)
       } else {
-        $(`#use-cookies-text`).text(ALLOW_CO)
+        $(`#use-cookies-text`).text(ALLOW_COOOKIES)
       }
     })
 
