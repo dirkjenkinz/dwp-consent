@@ -12,7 +12,10 @@ Import jquery & the dwp-cookie-consent files (one javaScript & one CSS styleshee
   <script src="./js/dwp-cookie-consent.js"></script>
 
 Then add the dwp-consent class to any HTML element:
-<body class=”dwp-consent”>
+  <div class=”dwp-consent”>
+
+The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "cookiesPage" in the element:
+  <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
 
 ---------------------------------
 
