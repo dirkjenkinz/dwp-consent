@@ -8,7 +8,7 @@ To get started:
 
 Import jquery & the dwp-cookie-consent files (one javaScript & one CSS stylesheet):
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
+    <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" /> 
     <script src="./js/dwp-cookie-consent.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
