@@ -14,7 +14,7 @@
     left: 0;
     right: 0;
     margin-left: 300px;
-    width: 50%;
+    width: 60%;
 }
 
 .dwp-consent-container-left {
@@ -26,17 +26,26 @@
 }
 
 header {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+.column {
+  float: left;
+  width: 45%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.right-side {
+  float: right;
+  width: 45%;
 }
 
 /* ============================================================ */
-
-body {
-    padding: 50px;
-}
-
-a {
-}
 
 .top-row {
     background: black;

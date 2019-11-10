@@ -10,15 +10,17 @@ const buildPopupBody = cookiesPage => {
   }
   let pBody = `<div class="fact">`;
   pBody += ourUse(cookiesPage);
+  pBody += `<div class="row">`;
   pBody += advertisingCookies();
   pBody += analyticCookies();
+  pBody += `</div>`;
   pBody += saveAndClose();
   pBody += `</div>`;
   return pBody;
 }
 
 const ourUse = cookiesPage => {
-  let seg = `<div class="row inside-fact">`;
+  let seg = `<div class="inside-fact">`;
   seg += `<header><h1>Our use of cookies</h1></header>`;
   seg += `<p>`;
   seg += `This site uses cookies which are essential for the site to work.`;
@@ -29,11 +31,11 @@ const ourUse = cookiesPage => {
   seg += `<li>Advertising – rarely used by DWP, but used by some services to track communications messaging.</li>`;
   seg += `<li>Analytics – in our case mostly Google Analytics.</li>`;
   seg += `</ol>`;
-  seg += `<br>By continuing to use this site, you agree to our use of essential cookies.`;
-  seg += `We won't set optional cookies unless you enable them.`;
+  seg += `By continuing to use this site, you agree to our use of essential cookies.`;
+  seg += ` We won't set optional cookies unless you enable them.`;
   seg += `<br>We ask that you use this tool to permit us to use the optional cookies.`;
   seg += `<br>Any data collected is anonymised.`
-  seg += `Using this tool will set a cookie on your device to remember your preferences.`;
+  seg += `<br>Using this tool will set a cookie on your device to remember your preferences.`;
   seg += `</p>`;
   seg += `<p>`;
   seg += `For more detailed information about the cookies we use, see our `;
@@ -44,8 +46,8 @@ const ourUse = cookiesPage => {
 }
 
 const advertisingCookies = () => {
-  let seg = `<div class="row inside-fact">`;
-  seg += `<header><h2>Advertising cookies</h2></header>`;
+  let seg = `<div class="inside-fact column">`;
+  seg += `<h2>Advertising cookies</h2>`;
   seg += `<label class="switch" for="allow-advertising-cookies">`;
   seg += `<input type="checkbox" id="allow-advertising-cookies">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Advertising Cookies"></span>`;
@@ -57,8 +59,8 @@ const advertisingCookies = () => {
 }
 
 const analyticCookies = () => {
-  let seg = `<div class="row inside-fact">`;
-  seg += `<header><h2>Analytic cookies</h2></header>`;
+  let seg = `<div class="inside-fact right-side">`;
+  seg += `<h2>Analytic cookies</h2>`;
   seg += `<label class="switch" for="allow-analytic-cookies">`;
   seg += `<input type="checkbox" id="allow-analytic-cookies">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Analytic Cookies"></span>`;
@@ -70,7 +72,7 @@ const analyticCookies = () => {
 }
 
 const saveAndClose = () => {
-  let seg = `<div class="row inside-fact text-center">`;
+  let seg = `<div class="inside-fact text-center">`;
   seg += `<button type="button" class="btn-danger btn-block" id="save-and-close" data-dismiss="modal" aria-label="Close">`;
   seg += `<span>Save and close</span>`;
   seg += `</button>`;

@@ -9,18 +9,15 @@
   <script src="./js/dwp-cookie-consent.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+
   <style>
     body {
       background: paleturquoise;
     }
 
-    .thingy {
-      margin: 700px 0 0 200px;
-      font-size: 120%;
-    }
-
-    #show-cookies {
-      font-size: 80%;
+    .keep-right {
+      margin-left: 800px;
+      margin-top: 760px;
     }
 
     #clear,
@@ -30,19 +27,16 @@
       color: white;
       border: 5px red solid;
       border-radius: 5%;
-      margin-left: 600px;
     }
   </style>
 </head>
 
 <body>
-  <!-- cookiesPage defaults to https://www.gov.uk/help/cookie-details -->
-  <div class="thingy dwp-consent slide" retention-period="5">
-    Cookies: <span id="show-cookies"></span>
-    <br>
-    <button id="clear">CLEAR DWP COOKIES</button>
-    <br><br>
-    <button id="reload">RELOAD PAGE</button>
+  <div class="dwp-consent">
+    <div class="keep-right">
+      <p id="show-cookies"></p>
+      <button id="clear">CLEAR DWP COOKIES</button>;
+      <button id="reload">RELOAD PAGE</button>
   </div>
 
   <script>
@@ -50,18 +44,16 @@
       const COOKIE_NAME = `DWP`;
       const nameLength = COOKIE_NAME.length;
       let cookies = document.cookie;
-      $(`#show-cookies`).text(cookies);
+      $(`#show-cookies`).text('Cookies = ' + cookies);
       $(`#clear`).click(() => {
-
         let cookies = document.cookie.split(`;`);
         for (let i = 0; i < cookies.length; i++) {
           let cookie = cookies[i].trim();
-          console.log(cookie)
           if (cookie.substring(0, nameLength) === COOKIE_NAME) {
-              document.cookie = `${cookie}; expires=Thu, 01 Jan 1970 00:00:01 GMT;'`;
+            document.cookie = `${cookie}; expires=Thu, 01 Jan 1970 00:00:01 GMT;'`;
           };
         };
-        $(`#show-cookies`).text(cookies);
+        $(`#show-cookies`).text(`Cookies = `);
       }),
         $(`#reload`).click(() => {
           location.reload();
