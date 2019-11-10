@@ -114,10 +114,7 @@ const saveAndClose = () => {
           let parms = $(".dwp-consent").first()[0];
           let retention = parseInt($(parms).attr(`retention-period`)) || 28;
           let d = new Date();
-          console.log(d);
-          console.log(retention);
           d.setDate(d.getDate() + retention);
-          console.log(d);
           let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
           document.cookie = DWPCookie;
           let slide = false;
