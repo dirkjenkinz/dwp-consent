@@ -2,63 +2,72 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
-    <title>Cookie Consent</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
-    <script src="./js/dwp-cookie-consent.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <title>Cookie Consent</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
+  <script src="./js/dwp-cookie-consent.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-    <style>
-        body {
-            background: paleturquoise;
-        }
-        
-        .thingy {
-            margin: 600px 0 0 600px;
-            font-size: 120%;
-        }
-        
-        #show-cookies {
-            font-size: 80%;
-        }
-        
-        #clear,
-        #reload {
-            font-size: 140%;
-            background: black;
-            color: white;
-            border: 5px red solid;
-            border-radius: 5%;
-            margin-left: 600px;
-        }
-    </style>
+  <style>
+    body {
+      background: paleturquoise;
+    }
+
+    .thingy {
+      margin: 700px 0 0 200px;
+      font-size: 120%;
+    }
+
+    #show-cookies {
+      font-size: 80%;
+    }
+
+    #clear,
+    #reload {
+      font-size: 140%;
+      background: black;
+      color: white;
+      border: 5px red solid;
+      border-radius: 5%;
+      margin-left: 600px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- cookiesPage defaults to https://www.gov.uk/help/cookie-details -->
-    <div class="thingy dwp-consent">
-        Cookies: <span id="show-cookies"></span>
-        <br>
-        <button id="clear">CLEAR DWP COOKIES</button>
-        <br><br>
-        <button id="reload">RELOAD PAGE</button>
-    </div>
+  <!-- cookiesPage defaults to https://www.gov.uk/help/cookie-details -->
+  <div class="thingy dwp-consent">
+    Cookies: <span id="show-cookies"></span>
+    <br>
+    <button id="clear">CLEAR DWP COOKIES</button>
+    <br><br>
+    <button id="reload">RELOAD PAGE</button>
+  </div>
 
-    <script>
-        $(document).ready(() => {
-            let cookies = document.cookie;
-            $(`#show-cookies`).text(cookies);
-            $(`#clear`).click(() => {
-                    document.cookie = "DWP=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                    let cookies = document.cookie;
-                    $(`#show-cookies`).text(cookies);
-                }),
-                $(`#reload`).click(() => {
-                    location.reload();
-                })
+  <script>
+    $(document).ready(() => {
+      const COOKIE_NAME = `DWP`;
+      const nameLength = COOKIE_NAME.length;
+      let cookies = document.cookie;
+      $(`#show-cookies`).text(cookies);
+      $(`#clear`).click(() => {
+
+        let cookies = document.cookie.split(`;`);
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i].trim();
+          console.log(cookie)
+          if (cookie.substring(0, nameLength) === COOKIE_NAME) {
+              document.cookie = `${cookie}; expires=Thu, 01 Jan 1970 00:00:01 GMT;'`;
+          };
+        };
+        $(`#show-cookies`).text(cookies);
+      }),
+        $(`#reload`).click(() => {
+          location.reload();
         })
-    </script>
+    })
+  </script>
 </body>
 
 </html>

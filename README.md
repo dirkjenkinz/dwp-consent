@@ -23,25 +23,26 @@ The cookies page defaults to https://www.gov.uk/help/cookie-details. To override
 By default, the pop-up is attached to the top centre of the page. To have it slide in from the left, use the "slide" parameter:
     <div class="dwp-consent slide">
 
----------------------------------
-
-This software handles one cookie ("DWP") with an object containing two parameters ("useCookies" & "analytics"):
-    DWP={"useCookies":false,"analytics":false}
-
-"useCookies" indicates whether or not the user has given us permission to use cookies.
-"analytics" indicates wheteher or not the user has given us permission to use their data for analytic purposes.
+By default, the retention period for the cookie set by this tool is 28 days. To override this, include "retention-period="[days]" in the element, where [days] = number of days to retain the cookie.
 
 ---------------------------------
 
-When invoked, dwp-cookie-consent looks for a "DWP" cookie.
-If no DWP cookie is found OR if a DWP cookie is found and useCookies = false, a pop-up is displayed.
-The pop-up explains our use of cookies and asks for permission to use cookies and to use their data for analytic purposes.
+When invoked, dwp-cookie-consent looks for cookies beginning with 'DWP';
+If no DWP cookies are found, a pop-up is displayed.
+The pop-up explains our use of cookies and asks for permission to set cookies for advertising and analytic purposes.
 The default in each case is 'no'.
-The reponses are recorded in the DWP cookie and the popup disappears.
+The any positive reponses are recorded in a cookie and the popup disappears.
 
 ----------------------------------
 
-The "DWP" cookie expires after 28 days.
+The cookies are:
+    DWP_retention_date  (always set and used to indicate that the user has been informed and asked about our use of cookies)
+    DWP_allow_advertising_cookies
+    DWP_allow_analytic_cookies
+
+----------------------------------
+
+The cookies expire after 28 days unless another retention period has been set.
 
 ----------------------------------
 
@@ -49,6 +50,5 @@ The "DWP" cookie expires after 28 days.
 NB: 
  This is a prototype.                                                           
  Wording for the popup has yet to be finalised.                                 
- Naming and format of the "DWP" cookie has yet to be finalised.                 
  The look of the popup has yet to be finalised.                                 
- A future version will allow for Welsh to be used as the language of the popup. 
+ A future version will allow for Welsh to be used as the language of the popup.

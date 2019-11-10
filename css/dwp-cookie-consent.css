@@ -1,13 +1,11 @@
 .dwp-consent-container {
-    background-color: black;
-    color: #efefef;
+    background-color: white;
+    color: black;
     padding: 5px 20px;
     font-size: 12px;
     line-height: 1.2em;
-    text-align: center;
     display: none;
     z-index: 9999999;
-   
 }
 
 .dwp-consent-container-top {
@@ -15,7 +13,7 @@
     top: 0;
     left: 0;
     right: 0;
-     margin-left: 300px;
+    margin-left: 300px;
     width: 50%;
 }
 
@@ -27,16 +25,17 @@
     width: 30%;
 }
 
+header {
+  margin-bottom: 30px;
+}
 
 /* ============================================================ */
 
 body {
     padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-    color: #00B7FF;
 }
 
 .top-row {
@@ -50,18 +49,19 @@ a {
     margin: 10px;
     border: 2px outset black;
     padding: 10px;
-    border: red 2px double;
+    border: black 2px double;
 }
 
 .inside-fact {
-    padding: 0 10px;
+    padding: 10px;
+    border: black 1px solid;
 }
 
 #save-and-close {
     font-size: 200%;
     background: red;
     color: white;
-    border: white 2px solid;
+    border: black 2px solid;
     border-radius: 5%;
 }
 
