@@ -8,15 +8,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
     <script src="./js/dwp-cookie-consent.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <style>
         body {
             background: paleturquoise;
         }
+
+        h1 {
+            text-align: center;
+        }
         
         .keep-right {
             margin-left: 800px;
-            margin-top: 760px;
+            margin-top: 600px;
         }
         
         #clear,
@@ -32,9 +35,10 @@
 
 <body>
     <div class="dwp-consent slide" retention-period="12">
+        <h1>DWP EU PERMISSION COOKIE POPUP DEMONSTRATOR/TESTER</h1>
         <div class="keep-right">
             <p id="show-cookies"></p>
-            <button id="clear">CLEAR DWP COOKIES</button>;
+            <button id="clear">CLEAR DWP COOKIES</button>
             <button id="reload">RELOAD PAGE</button>
         </div>
 

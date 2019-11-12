@@ -1,4 +1,4 @@
-A jQuery plug-in to create EU Cookie Law popups.
+A plug-in to create EU Cookie Law popups.
 
 Run demo.html to see it in action.
 
@@ -10,9 +10,9 @@ Import jquery & the dwp-cookie-consent files (one javaScript & one CSS styleshee
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" /> 
     <script src="./js/dwp-cookie-consent.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-          (NB: jquery-ui is only needed if the "slide" parameter is used)
+  {NB: The jQuery is only needed for the demo.html. The plug-in itself is written in vanilla JS}
+
 
 Then add the dwp-consent class to any HTML element:
     <div class=”dwp-consent”>
@@ -31,7 +31,7 @@ When invoked, dwp-cookie-consent looks for cookies beginning with 'DWP';
 If no DWP cookies are found, a pop-up is displayed.
 The pop-up explains our use of cookies and asks for permission to set cookies for advertising and analytic purposes.
 The default in each case is 'no'.
-The any positive reponses are recorded in a cookie and the popup disappears.
+Any positive reponses are recorded in a cookie and the popup disappears.
 
 ----------------------------------
 
