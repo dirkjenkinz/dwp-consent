@@ -31,13 +31,21 @@
 }
 
 @-webkit-keyframes slide-from-left {
-    from { left: -80%;}
-    to { left: 0;}
+    from {
+        left: -80%;
+    }
+    to {
+        left: 0;
+    }
 }
 
 @keyframes slide-from-left {
-    from { left: -80%;}
-    to {left: 0;}
+    from {
+        left: -80%;
+    }
+    to {
+        left: 0;
+    }
 }
 
 header {
@@ -80,11 +88,14 @@ header {
 }
 
 #save-and-close {
-    font-size: 200%;
-    background: red;
+    background: green;
     color: white;
-    border: black 2px solid;
-    border-radius: 5%;
+    font-size: 150%;
+    padding: 10px;
+}
+
+#save-and-close :hover {
+    background: #228B22;
 }
 
 .toggle {
