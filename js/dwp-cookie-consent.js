@@ -1,3 +1,5 @@
+'use strict'
+
 const DISALLOW_ANALYTICS = `Turn switch to "Off" to disallow use of analytic cookies.`;
 const ALLOW_ANALYTICS = `Turn switch to "On" to allow use of analytic cookies.`;
 const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cookies.`;
@@ -118,7 +120,7 @@ const closePopup = () => {
 };
 
 document.addEventListener(`click`, e => {
-  _target = event.target;
+  let _target = event.target;
   if (!_target.closest('#consent-container')) {
     closePopup();
   };
@@ -137,9 +139,7 @@ const cookiesAlreadyExist = () => {
   return cookiesExist;
 };
 
-window.onload = () => {
-  let initialised = false;
-  let buildHTML = (popupBody, slide) => {
+const buildHTML = (popupBody, slide) => {
     let html = `<div id="consent-container" class="dwp-consent-container`;
     if (slide) {
       html += ` dwp-consent-container-left`;
@@ -153,6 +153,10 @@ window.onload = () => {
     return html;
   };
 
+window.onload = () => {
+  let initialised = false;
+  let slide = false;
+
   if (!cookiesAlreadyExist()) {
     let parms = document.getElementsByClassName(`dwp-consent`);
     let retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
@@ -160,14 +164,13 @@ window.onload = () => {
     d.setDate(d.getDate() + retention);
     let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
     document.cookie = DWPCookie;
-    let slide = false;
-    _class = parms[0].getAttribute(`class`);
     
+    let _class = parms[0].getAttribute(`class`);
+    let cookiesPage = parms[0].getAttribute(`cookiesPage`);
+
     if (_class.includes(`slide`)) {
       slide = true;
     };
-
-    let cookiesPage = parms[0].getAttribute(`cookiesPage`);
 
     if (!initialised) {
       initialised = true;
