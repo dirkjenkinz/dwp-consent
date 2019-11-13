@@ -31,21 +31,13 @@
 }
 
 @-webkit-keyframes slide-from-left {
-    from {
-        left: -80%;
-    }
-    to {
-        left: 0;
-    }
+    from { left: -80%;}
+    to { left: 0;}
 }
 
 @keyframes slide-from-left {
-    from {
-        left: -100%;
-    }
-    to {
-        left: 0;
-    }
+    from { left: -80%;}
+    to {left: 0;}
 }
 
 header {

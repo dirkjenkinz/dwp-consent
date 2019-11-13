@@ -6,16 +6,20 @@ const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cooki
 const DISALLOW_ADVERTISING = `Turn switch to "Off" to disallow use of advertising cookies.`;
 const COOKIE_NAME = "DWP";
 
-const buildPopupBody = cookiesPage => {
+const buildPopupBody = (cookiesPage, slide) => {
   if (!cookiesPage || cookiesPage === ``) {
     cookiesPage = `https://www.gov.uk/help/cookie-details`;
   }
   let pBody = `<div class="fact">`;
   pBody += ourUse(cookiesPage);
-  pBody += `<div class="row">`;
-  pBody += advertisingCookies();
-  pBody += analyticCookies();
-  pBody += `</div>`;
+  if (!slide) {
+    pBody += `<div class="row">`;
+  }
+  pBody += advertisingCookies(slide);
+  pBody += analyticCookies(slide);
+  if (!slide) {
+    pBody += `</div>`;
+  }
   pBody += saveAndClose();
   pBody += `</div>`;
   return pBody;
@@ -47,8 +51,13 @@ const ourUse = cookiesPage => {
   return seg;
 }
 
-const advertisingCookies = () => {
-  let seg = `<div class="inside-fact column">`;
+const advertisingCookies = (slide) => {
+  let seg;
+  if (slide) {
+    seg = `<div class="inside-fact">`;
+  } else {
+    seg = `<div class="inside-fact column">`;
+  }
   seg += `<h2>Advertising cookies</h2>`;
   seg += `<label class="switch" for="allow-advertising-cookies">`;
   seg += `<input type="checkbox" id="allow-advertising-cookies" onChange="changeAdvertising()">`;
@@ -60,8 +69,13 @@ const advertisingCookies = () => {
   return seg;
 }
 
-const analyticCookies = () => {
-  let seg = `<div class="inside-fact right-side">`;
+const analyticCookies = (slide) => {
+  let seg;
+  if (slide) {
+    seg = `<div class="inside-fact">`;
+  } else {
+    seg = `<div class="inside-fact right-side">`;
+  }
   seg += `<h2>Analytic cookies</h2>`;
   seg += `<label class="switch" for="allow-analytic-cookies">`;
   seg += `<input type="checkbox" id="allow-analytic-cookies" onChange="changeAnalytics()">`;
@@ -70,6 +84,7 @@ const analyticCookies = () => {
   seg += `</label>`
   seg += `<p id="allow-analytic-cookies-text"></p>`
   seg += `</div>`;
+  console.log(seg)
   return seg;
 }
 
@@ -140,18 +155,18 @@ const cookiesAlreadyExist = () => {
 };
 
 const buildHTML = (popupBody, slide) => {
-    let html = `<div id="consent-container" class="dwp-consent-container`;
-    if (slide) {
-      html += ` dwp-consent-container-left`;
-    } else {
-      html += ` dwp-consent-container-top `;
-    }
-    html += ` dwp-consent-color-default"`;
-    html += ` style="display: block;">`
-    html += `<div class="dwp-consent-body">${popupBody}</div>`;
-    html += `</div>`;
-    return html;
-  };
+  let html = `<div id="consent-container" class="dwp-consent-container`;
+  if (slide) {
+    html += ` dwp-consent-container-left`;
+  } else {
+    html += ` dwp-consent-container-top `;
+  }
+  html += ` dwp-consent-color-default"`;
+  html += ` style="display: block;">`
+  html += `<div class="dwp-consent-body">${popupBody}</div>`;
+  html += `</div>`;
+  return html;
+};
 
 window.onload = () => {
   let initialised = false;
@@ -164,7 +179,7 @@ window.onload = () => {
     d.setDate(d.getDate() + retention);
     let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
     document.cookie = DWPCookie;
-    
+
     let _class = parms[0].getAttribute(`class`);
     let cookiesPage = parms[0].getAttribute(`cookiesPage`);
 
@@ -174,7 +189,7 @@ window.onload = () => {
 
     if (!initialised) {
       initialised = true;
-      let html = buildHTML(buildPopupBody(cookiesPage), slide);
+      let html = buildHTML(buildPopupBody(cookiesPage, slide), slide);
       document.body.innerHTML = document.body.innerHTML + html;
       changeAdvertising();
       changeAnalytics();
