@@ -6,27 +6,26 @@ const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cooki
 const DISALLOW_ADVERTISING = `Turn switch to "Off" to disallow use of advertising cookies.`;
 const COOKIE_NAME = "DWP";
 
-const buildPopupBody = (cookiesPage, slide) => {
+const buildPopupBody = (cookiesPage, slide, spread) => {
     if (!cookiesPage || cookiesPage === ``) {
         cookiesPage = `https://www.gov.uk/help/cookie-details`;
     }
     let pBody = `<div class="fact">`;
-    pBody += ourUse(cookiesPage);
-    if (!slide) {
-        pBody += `<div class="row">`;
-    }
-    pBody += advertisingCookies(slide);
+    pBody += ourUse(cookiesPage, spread);
+    pBody += advertisingCookies(slide, spread);
     pBody += analyticCookies(slide);
-    if (!slide) {
-        pBody += `</div>`;
-    }
-    pBody += saveAndClose();
+    pBody += saveAndClose(spread);
     pBody += `</div>`;
     return pBody;
 }
 
-const ourUse = cookiesPage => {
-    let seg = `<div class="inside-fact">`;
+const ourUse = (cookiesPage, spread) => {
+    let seg;
+    if (spread){
+        seg = `<div class="inside-fact column">`;
+    }else {
+        seg = `<div class="inside-fact">`;
+    }
     seg += `<header><h1>How we use cookies</h1></header>`;
     seg += `<p>`;
     seg += `A cookie is a small file which is stored on your device for a short time to make this service work.`;
@@ -52,10 +51,12 @@ const ourUse = cookiesPage => {
     return seg;
 }
 
-const advertisingCookies = (slide) => {
+const advertisingCookies = (slide, spread) => {
     let seg;
     if (slide) {
         seg = `<div class="inside-fact">`;
+    } else if (spread) {
+        seg = `<div class="inside-fact right-side">`;
     } else {
         seg = `<div class="inside-fact column">`;
     }
@@ -88,8 +89,13 @@ const analyticCookies = (slide) => {
     return seg;
 }
 
-const saveAndClose = () => {
-    let seg = `<div class="inside-fact text-center">`;
+const saveAndClose = (spread) => {
+    let seg;
+     if (spread){
+        seg = `<div class="inside-fact text-center right-side">`;
+     } else {
+        seg = `<div class="inside-fact text-center">`;
+     }
     seg += `<button type="button" class="btn-danger btn-block" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="closeAndSave()">`;
     seg += `<span>Save and close</span>`;
     seg += `</button>`;
@@ -171,6 +177,7 @@ const buildHTML = (popupBody, slide) => {
 window.onload = () => {
     let initialised = false;
     let slide = false;
+    let spread = false;
 
     if (!cookiesAlreadyExist()) {
         let parms = document.getElementsByClassName(`dwp-consent`);
@@ -185,11 +192,13 @@ window.onload = () => {
 
         if (_class.includes(`slide`)) {
             slide = true;
+        } else if (_class.includes(`spread`)) {
+            spread = true;
         };
 
         if (!initialised) {
             initialised = true;
-            let html = buildHTML(buildPopupBody(cookiesPage, slide), slide);
+            let html = buildHTML(buildPopupBody(cookiesPage, slide, spread), slide);
             document.body.innerHTML = document.body.innerHTML + html;
             changeAdvertising();
             changeAnalytics();
