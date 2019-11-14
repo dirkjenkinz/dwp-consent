@@ -6,22 +6,22 @@ const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cooki
 const DISALLOW_ADVERTISING = `Turn switch to "Off" to disallow use of advertising cookies.`;
 const COOKIE_NAME = "DWP";
 
-const buildPopupBody = (cookiesPage, slide, spread) => {
+const buildPopupBody = (cookiesPage, slide, squash) => {
     if (!cookiesPage || cookiesPage === ``) {
         cookiesPage = `https://www.gov.uk/help/cookie-details`;
     }
     let pBody = `<div class="fact">`;
-    pBody += ourUse(cookiesPage, spread);
-    pBody += advertisingCookies(slide, spread);
+    pBody += ourUse(cookiesPage, squash);
+    pBody += advertisingCookies(slide, squash);
     pBody += analyticCookies(slide);
-    pBody += saveAndClose(spread);
+    pBody += saveAndClose(squash);
     pBody += `</div>`;
     return pBody;
 }
 
-const ourUse = (cookiesPage, spread) => {
+const ourUse = (cookiesPage, squash) => {
     let seg;
-    if (spread) {
+    if (squash) {
         seg = `<div class="inside-fact column">`;
     } else {
         seg = `<div class="inside-fact">`;
@@ -51,11 +51,11 @@ const ourUse = (cookiesPage, spread) => {
     return seg;
 }
 
-const advertisingCookies = (slide, spread) => {
+const advertisingCookies = (slide, squash) => {
     let seg;
     if (slide) {
         seg = `<div class="inside-fact">`;
-    } else if (spread) {
+    } else if (squash) {
         seg = `<div class="inside-fact right-side">`;
     } else {
         seg = `<div class="inside-fact column">`;
@@ -89,9 +89,9 @@ const analyticCookies = (slide) => {
     return seg;
 }
 
-const saveAndClose = (spread) => {
+const saveAndClose = (squash) => {
     let seg;
-    if (spread) {
+    if (squash) {
         seg = `<div class="inside-fact text-center right-side">`;
     } else {
         seg = `<div class="inside-fact text-center">`;
@@ -175,7 +175,7 @@ const buildHTML = (popupBody, slide) => {
 window.onload = () => {
     let initialised = false;
     let slide = false;
-    let spread = false;
+    let squash = false;
 
     if (!cookiesAlreadyExist()) {
         let parms = document.getElementsByClassName(`dwp-consent`);
@@ -190,13 +190,13 @@ window.onload = () => {
 
         if (_class.includes(`slide`)) {
             slide = true;
-        } else if (_class.includes(`spread`)) {
-            spread = true;
+        } else if (_class.includes(`squash`)) {
+            squash = true;
         };
 
         if (!initialised) {
             initialised = true;
-            let html = buildHTML(buildPopupBody(cookiesPage, slide, spread), slide);
+            let html = buildHTML(buildPopupBody(cookiesPage, slide, squash), slide);
             document.body.innerHTML = document.body.innerHTML + html;
             changeAdvertising();
             changeAnalytics();
