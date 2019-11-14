@@ -21,9 +21,9 @@ const buildPopupBody = (cookiesPage, slide, spread) => {
 
 const ourUse = (cookiesPage, spread) => {
     let seg;
-    if (spread){
+    if (spread) {
         seg = `<div class="inside-fact column">`;
-    }else {
+    } else {
         seg = `<div class="inside-fact">`;
     }
     seg += `<header><h1>How we use cookies</h1></header>`;
@@ -91,11 +91,11 @@ const analyticCookies = (slide) => {
 
 const saveAndClose = (spread) => {
     let seg;
-     if (spread){
+    if (spread) {
         seg = `<div class="inside-fact text-center right-side">`;
-     } else {
+    } else {
         seg = `<div class="inside-fact text-center">`;
-     }
+    }
     seg += `<button type="button" class="btn-danger btn-block" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="closeAndSave()">`;
     seg += `<span>Save and close</span>`;
     seg += `</button>`;
@@ -163,12 +163,10 @@ const cookiesAlreadyExist = () => {
 const buildHTML = (popupBody, slide) => {
     let html = `<div id="consent-container" class="dwp-consent-container`;
     if (slide) {
-        html += ` dwp-consent-container-left`;
+        html += ` dwp-consent-container-left">`;
     } else {
-        html += ` dwp-consent-container-top `;
+        html += ` dwp-consent-container-top">`;
     }
-    html += ` dwp-consent-color-default"`;
-    html += ` style="display: block;">`
     html += `<div class="dwp-consent-body">${popupBody}</div>`;
     html += `</div>`;
     return html;

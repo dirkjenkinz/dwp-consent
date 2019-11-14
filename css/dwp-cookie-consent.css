@@ -7,7 +7,9 @@
     display: none;
     z-index: 9999999;
     border: black 2px solid;
+    display: block;
 }
+
 
 .dwp-consent-container-top {
     position: absolute;
@@ -89,7 +91,7 @@ header {
 }
 
 #save-and-close :hover {
-    background: #228B00;
+    background: #226600;
 }
 
 .toggle {
