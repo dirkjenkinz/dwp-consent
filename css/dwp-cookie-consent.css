@@ -16,8 +16,8 @@
     top: 0;
     left: 0;
     right: 0;
-    margin-left: 300px;
-    width: 60%;
+    margin-left: 400px;
+    width: 40%;
 }
 
 .dwp-consent-container-left {
@@ -57,7 +57,7 @@ header {
 
 .column {
     float: left;
-    width: 48%;
+    width: 45%;
 }
 
 .row:after {
@@ -68,7 +68,7 @@ header {
 
 .right-side {
     float: right;
-    width: 48%;
+    width: 45%;
 }
 
 
@@ -77,7 +77,7 @@ header {
 }
 
 .inside-fact {
-    padding: 0 0 10px 10px;
+    padding: 0 15px 10px 10px;
     border: black 1px solid;
 }
 
