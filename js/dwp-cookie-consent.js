@@ -6,16 +6,17 @@ const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cooki
 const DISALLOW_ADVERTISING = `Turn switch to "Off" to disallow use of advertising cookies.`;
 const COOKIE_NAME = "DWP";
 
-const buildPopupBody = (cookiesPage, slide, advertising) => {
+const buildPopupBody = (cookiesPage, advertising) => {
   if (!cookiesPage || cookiesPage === ``) {
     cookiesPage = `https://www.gov.uk/help/cookie-details`;
   }
   let pBody = `<div class="fact">`;
   pBody += ourUse(cookiesPage, advertising);
+  pBody += analyticCookies();
   if (advertising) {
-    pBody += advertisingCookies(slide);
+    pBody += advertisingCookies();
   }
-  pBody += analyticCookies(slide, advertising);
+
   pBody += saveAndClose();
   pBody += `</div>`;
   return pBody;
@@ -50,38 +51,24 @@ const ourUse = (cookiesPage, advertising) => {
   return seg;
 }
 
-const advertisingCookies = (slide) => {
-  let seg;
-  if (slide) {
-    seg = `<div class="inside-fact">`;
-  } else {
-    seg = `<div class="inside-fact column">`;
-  }
+const advertisingCookies = () => {
+  let seg = `<div class="inside-fact">`;
   seg += `<h2>Advertising cookies</h2>`;
   seg += `<label class="switch" for="allow-advertising-cookies">`;
   seg += `<input type="checkbox" id="allow-advertising-cookies" onChange="changeAdvertising()">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Advertising Cookies"></span>`;
-  seg += `<span><br><br><br>Disallow/Allow</span>`;
   seg += `</label>`;
   seg += `<p id="allow-advertising-cookies-text"></p>`;
   seg += `</div>`;
   return seg;
 }
 
-const analyticCookies = (slide, advertising) => {
-  let seg;
-  if (slide) {
-    seg = `<div class="inside-fact">`;
-  } else if (advertising) {
-    seg = `<div class="inside-fact right-side">`;
-  } else {
-    seg = `<div class="inside-fact">`;
-  }
+const analyticCookies = () => {
+  let seg = `<div class="inside-fact">`;
   seg += `<h2>Analytic cookies</h2>`;
   seg += `<label class="switch" for="allow-analytic-cookies">`;
   seg += `<input type="checkbox" id="allow-analytic-cookies" onChange="changeAnalytics()">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Analytic Cookies"></span>`;
-  seg += `<span><br><br><br>Disallow/Allow</span>`;
   seg += `</label>`
   seg += `<p id="allow-analytic-cookies-text"></p>`
   seg += `</div>`;
@@ -194,7 +181,7 @@ window.onload = () => {
 
     if (!initialised) {
       initialised = true;
-      let html = buildHTML(buildPopupBody(cookiesPage, slide, advertising), slide);
+      let html = buildHTML(buildPopupBody(cookiesPage, advertising), slide);
       document.body.innerHTML = document.body.innerHTML + html;
       if (advertising) {
         changeAdvertising();
