@@ -33,7 +33,7 @@ const ourUse = (cookiesPage, squash) => {
     seg += `<ol>`
     seg += `<li>Essential – a strictly defined group of cookies that are technically necessary for providing the service.`;
     seg += `<li>Advertising (optional) – rarely used by DWP, but used by some services to track communications messaging.</li>`;
-    seg += `<li>Analytics (optional) – we use Google Analytics to get information about how you use this site, which helps us make it better.</li>`;
+    seg += `<li>Analytical (optional) – we use Google Analytics to get information about how you use this site, which helps us make it better.</li>`;
     seg += `</ol>`;
     seg += `<br>We will not:`;
     seg += `<ul>`;
