@@ -54,11 +54,12 @@ const ourUse = (cookiesPage, advertising) => {
 const advertisingCookies = () => {
   let seg = `<div class="inside-fact">`;
   seg += `<h2>Advertising cookies</h2>`;
-  seg += `<label class="switch" for="allow-advertising-cookies">`;
+  seg += `<label class="switch" for="allow-advertising-cookies" name="advertising">`;
   seg += `<input type="checkbox" id="allow-advertising-cookies" onChange="changeAdvertising()">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Advertising Cookies"></span>`;
-  seg += `</label>`;
-  seg += `<p id="allow-advertising-cookies-text"></p>`;
+  seg += `<span><br><br><br>Disallow/Allow</span>`;
+  seg += `</label>`
+  seg += `<p id="allow-advertising-cookies-text"></p>`
   seg += `</div>`;
   return seg;
 }
@@ -66,9 +67,10 @@ const advertisingCookies = () => {
 const analyticCookies = () => {
   let seg = `<div class="inside-fact">`;
   seg += `<h2>Analytic cookies</h2>`;
-  seg += `<label class="switch" for="allow-analytic-cookies">`;
+  seg += `<label class="switch" for="allow-analytic-cookies" name="analytics">`;
   seg += `<input type="checkbox" id="allow-analytic-cookies" onChange="changeAnalytics()">`;
   seg += `<span class="slider round" aria-label="Allow or Disallow Analytic Cookies"></span>`;
+  seg += `<span><br><br><br>Disallow/Allow</span>`;
   seg += `</label>`
   seg += `<p id="allow-analytic-cookies-text"></p>`
   seg += `</div>`;
