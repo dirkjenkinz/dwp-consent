@@ -21,7 +21,7 @@ const buildPopupBody = (cookiesPage, advertising) => {
 
 const ourUse = (cookiesPage, advertising) => {
   let seg = `<div class="inside-fact">`;
-  seg += `<div class="heading-large"><h1>How we use cookies</h1></div>`;
+  seg += `<div class="heading-large header"><h1>How we use cookies</h1></div>`;
   seg += `<p>`;
   seg += `A cookie is a small file which we store on your device for a short time to make this service work.`;
   seg += `<br><br>We use cookies that are:`;
@@ -54,8 +54,9 @@ const analyticCookies = () => {
   seg += `We use analytics software to get information about how you use this service in order to help us make it better.`;
   seg += `</p>`;
   seg += `<div class="form-group">`;
+  seg += `<fieldset>`;
+  seg += `<legend><div class="heading-small"><h3>Can we use analytics cookies to help us improve this service?</h3></div></legend>`;
   seg += `<label class="block-label" for="analytic-yes">`;
-  seg += `<div class="heading-small"><h3>Can we use analytics cookies to help us improve this service?</div></h3>`;
   seg += `<input id="analytic-yes" type="radio" name="analytic" value="Yes" aria-controls="allow-analytic-cookies">`;
   seg += `Yes`;
   seg += `</label>`;
@@ -63,6 +64,7 @@ const analyticCookies = () => {
   seg += `<input id="analytic-no" type="radio" name="analytic" value="No" aria-controls="allow-analytic-cookies" checked>`;
   seg += `No`;
   seg += `</label>`;
+  seg += `</fieldset>`;
   seg += `</div>`;
   seg += `</div>`;
   return seg;
@@ -75,8 +77,9 @@ const advertisingCookies = () => {
   seg += `Sometimes we may use cookies that help us with our communications and marketing.`;
   seg += `</p>`;
   seg += `<div class="form-group">`;
+  seg += `<fieldset>`;
+  seg += `<legend><div class="heading-small"><h3>Can we use advertising cookies to help us with our communications and marketing?</h3></div></legend>`;
   seg += `<label class="block-label" for="advertising-yes">`;
-  seg += `<h3>Can we use advertising cookies to help us with our communications and marketing?</h3>`
   seg += `<input id="advertising-yes" type="radio" name="advertising" value="Yes" aria-controls="allow-advertising-cookies">`;
   seg += `Yes`;
   seg += `</label>`;
@@ -84,6 +87,7 @@ const advertisingCookies = () => {
   seg += `<input id="advertising-no" type="radio" name="advertising" value="No" aria-controls="allow-advertising-cookies" checked>`;
   seg += `No`;
   seg += `</label>`;
+  seg += `</fieldset>`
   seg += `</div>`;
   seg += `</div>`;
   return seg;

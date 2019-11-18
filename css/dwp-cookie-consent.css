@@ -108,3 +108,7 @@ input[type='radio'] {
   color: grey;
   font-size: 120%;
 }
+
+fieldset {
+   border:0 none;
+}
