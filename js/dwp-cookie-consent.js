@@ -20,7 +20,7 @@ const buildPopupBody = (cookiesPage, advertising) => {
 
 const ourUse = (cookiesPage, advertising) => {
   let seg = `<div class="inside-fact">`;
-  seg += `<header><h1>How we use cookies<h1></header>`;
+  seg += `<div class="heading-large"><h1>How we use cookies</h1></div>`;
   seg += `<p>`;
   seg += `A cookie is a small file which we store on your device for a short time to make this service work.`;
   seg += `<br><br>We use cookies that are:`;
@@ -40,21 +40,21 @@ const ourUse = (cookiesPage, advertising) => {
   seg += `<a href="${cookiesPage}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`;
   seg += `</p>`;
   seg += `<br><br><p>`;
-  seg += `<header><h2>Optional Cookie Settings</h2></header>`;
+  seg += `<div class="heading-medium"><h2>Optional Cookie Settings</h2></div>`;
   seg += `</p>`;
   seg += `</div>`;
   return seg;
 }
 
 const analyticCookies = () => {
-  let seg = `<br><div class="inside-fact">`;
-  seg += `<h2>Analytics cookies</h2>`;
-  seg += `<span class="form-hint">`;
+  let seg = `<div class="inside-fact">`;
+  seg += `<div class="heading-medium"><h2>Analytics cookies</h2></div>`;
+  seg += `<p>`;
   seg += `We use analytics software to get information about how you use this service in order to help us make it better.`;
-  seg += `</span>`;
+  seg += `</p>`;
   seg += `<div class="form-group">`;
   seg += `<label class="block-label" for="analytic-yes">`;
-  seg += `<h3>Can we use analytics cookies to help us improve this service?</h3>`;
+  seg += `<div class="heading-small"><h3>Can we use analytics cookies to help us improve this service?</div></h3>`;
   seg += `<input id="analytic-yes" type="radio" name="analytic" value="Yes" aria-controls="allow-analytic-cookies">`;
   seg += `Yes`;
   seg += `</label>`;
@@ -70,9 +70,9 @@ const analyticCookies = () => {
 const advertisingCookies = () => {
   let seg = `<div class="inside-fact">`;
   seg += `<h2>Advertising cookies</h2>`;
-  seg += `<span class="form-hint">`;
+  seg += `<p>`;
   seg += `Sometimes we may use cookies that help us with our communications and marketing.`;
-  seg += `</span>`;
+  seg += `</p>`;
   seg += `<div class="form-group">`;
   seg += `<label class="block-label" for="advertising-yes">`;
   seg += `<h3>Can we use advertising cookies to help us with our communications and marketing?</h3>`
