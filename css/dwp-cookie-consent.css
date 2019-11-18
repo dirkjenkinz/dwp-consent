@@ -10,6 +10,10 @@
     display: block;
 }
 
+.banner {
+  background:black;
+  color: white;
+}
 
 .dwp-consent-container-top {
     position: absolute;
@@ -52,18 +56,17 @@
 }
 
 .heading-large {
-    text-align: left;
     padding: 0;
     margin: 0;
-    font-size: 120%;
+
 }
 
-.heading-medium, h2 {
+.heading-medium {
     text-align: left;
     padding: 0;
 }
 
-.heading-small, h3 {
+.heading-small {
     text-align: left;
     padding: 0;
 }

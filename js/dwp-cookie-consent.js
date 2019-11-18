@@ -6,6 +6,7 @@ const buildPopupBody = (cookiesPage, advertising) => {
   if (!cookiesPage || cookiesPage === ``) {
     cookiesPage = `https://www.gov.uk/help/cookie-details`;
   }
+  
   let pBody = `<div class="fact">`;
   pBody += ourUse(cookiesPage, advertising);
   pBody += analyticCookies();
