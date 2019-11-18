@@ -1,9 +1,5 @@
 'use strict'
 
-const DISALLOW_ANALYTICS = `Turn switch to "Off" to disallow use of analytic cookies.`;
-const ALLOW_ANALYTICS = `Turn switch to "On" to allow use of analytic cookies.`;
-const ALLOW_ADVERTISING = `Turn switch to "On" to allow use of advertising cookies.`;
-const DISALLOW_ADVERTISING = `Turn switch to "Off" to disallow use of advertising cookies.`;
 const COOKIE_NAME = "DWP";
 
 const buildPopupBody = (cookiesPage, advertising) => {
@@ -17,7 +13,7 @@ const buildPopupBody = (cookiesPage, advertising) => {
     pBody += advertisingCookies();
   }
 
-  pBody += saveAndClose();
+  pBody += saveAndCloseButton();
   pBody += `</div>`;
   return pBody;
 }
@@ -40,6 +36,7 @@ const ourUse = (cookiesPage, advertising) => {
   seg += `<li>use any essential cookies until you use the service</li>`;
   seg += `<li>use any optional cookies unless you tell us we can</li>`;
   seg += `<li>be able to identify you through using cookies</li>`;
+  seg += `</ul>`;
   seg += `<br>By continuing to use this site, you agree to our use of essential cookies.`;
   seg += `<br>We ask that you use this tool to permit us to use the optional cookies, as they will help us make the service better.`;
   seg += `</p>`;
@@ -51,71 +48,79 @@ const ourUse = (cookiesPage, advertising) => {
   return seg;
 }
 
-const advertisingCookies = () => {
-  let seg = `<div class="inside-fact">`;
-  seg += `<h2>Advertising cookies</h2>`;
-  seg += `<label class="switch" for="allow-advertising-cookies" name="advertising">`;
-  seg += `<input type="checkbox" id="allow-advertising-cookies" onChange="changeAdvertising()">`;
-  seg += `<span class="slider round" aria-label="Allow or Disallow Advertising Cookies"></span>`;
-  seg += `<span><br><br><br>Disallow/Allow</span>`;
-  seg += `</label>`
-  seg += `<p id="allow-advertising-cookies-text"></p>`
-  seg += `</div>`;
-  return seg;
-}
-
 const analyticCookies = () => {
   let seg = `<div class="inside-fact">`;
-  seg += `<h2>Analytic cookies</h2>`;
-  seg += `<label class="switch" for="allow-analytic-cookies" name="analytics">`;
-  seg += `<input type="checkbox" id="allow-analytic-cookies" onChange="changeAnalytics()">`;
-  seg += `<span class="slider round" aria-label="Allow or Disallow Analytic Cookies"></span>`;
-  seg += `<span><br><br><br>Disallow/Allow</span>`;
-  seg += `</label>`
-  seg += `<p id="allow-analytic-cookies-text"></p>`
+  seg += `<h2>Can we use cookies to help us improve the service?</h2>`;
+  seg += `<span class="form-hint">`;
+  seg += `We use Google Analytics to get information about how you use this website in order to help us make it better. This will not identify you.`;
+  seg += `</span>`;
+  seg += `<div class="form-group">`;
+  seg += `<label class="block-label" for="analytic-yes">`;
+  seg += `<input id="analytic-yes" type="radio" name="analytic" value="Yes" aria-controls="allow-analytic-cookies">`;
+  seg += `Yes`;
+  seg += `</label>`;
+  seg += `<label class="block-label" for="analytic-no">`;
+  seg += `<input id="analytic-no" type="radio" name="analytic" value="No" aria-controls="allow-analytic-cookies" checked>`;
+  seg += `No`;
+  seg += `</label>`;
+  seg += `</div>`;
   seg += `</div>`;
   return seg;
 }
 
-const saveAndClose = () => {
+const advertisingCookies = () => {
+  let seg = `<div class="inside-fact">`;
+  seg += `<h2>Can we use cookies to help with communications and marketing?</h2>`;
+  seg += `<span class="form-hint">`;
+  seg += `Sometimes we may use cookies that help us with our communications and marketing. This will not identify you.`;
+  seg += `</span>`;
+  seg += `<div class="form-group">`;
+  seg += `<label class="block-label" for="advertising-yes">`;
+  seg += `<input id="advertising-yes" type="radio" name="advertising" value="Yes" aria-controls="allow-advertising-cookies">`;
+  seg += `Yes`;
+  seg += `</label>`;
+  seg += `<label class="block-label" for="advertising-no">`;
+  seg += `<input id="advertising-no" type="radio" name="advertising" value="No" aria-controls="allow-advertising-cookies" checked>`;
+  seg += `No`;
+  seg += `</label>`;
+  seg += `</div>`;
+  seg += `</div>`;
+  return seg;
+}
+
+const saveAndCloseButton = () => {
   let seg = `<div class="inside-fact text-center">`;
-  seg += `<button type="button" class="btn-danger btn-block" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="closeAndSave()">`;
+  seg += `<button type="button" class="btn-danger btn-block" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="saveAndClose()">`;
   seg += `<span>Save and close</span>`;
   seg += `</button>`;
   seg += `</div>`
   return seg;
 }
 
-const changeAdvertising = () => {
-  if (document.querySelector(`#allow-advertising-cookies`).checked) {
-    document.getElementById(`allow-advertising-cookies-text`).innerHTML = DISALLOW_ADVERTISING;
-  } else {
-    document.getElementById(`allow-advertising-cookies-text`).innerHTML = ALLOW_ADVERTISING;
-  }
-}
-
-const changeAnalytics = () => {
-  if (document.querySelector(`#allow-analytic-cookies`).checked) {
-    document.getElementById(`allow-analytic-cookies-text`).innerHTML = DISALLOW_ANALYTICS;
-  } else {
-    document.getElementById(`allow-analytic-cookies-text`).innerHTML = ALLOW_ANALYTICS;
-  }
-}
-
-const closeAndSave = () => {
+const saveAndClose = () => {
   let parms = document.getElementsByClassName(`dwp-consent`);
   let retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
   let d = new Date();
   d.setDate(d.getDate() + retention);
-
-  if (document.querySelector(`#allow-advertising-cookies`) && document.querySelector(`#allow-advertising-cookies`).checked) {
-    document.cookie = `${COOKIE_NAME}_allow_advertising_cookies=true; expires= ${d}`;
-  }
-
-  if (document.querySelector(`#allow-analytic-cookies`).checked) {
-    document.cookie = `${COOKIE_NAME}_allow_analytic_cookies=true; expires= ${d}`;
-  }
+  setAdvertisingCookie(d);
+  setAnalyticCookie(d);
   closePopup();
+}
+
+const setAdvertisingCookie = date => {
+  let parms = document.getElementsByClassName(`dwp-consent`);
+  let _class = parms[0].getAttribute(`class`);
+  if (_class.includes(`advertising`)) {
+    if (document.getElementsByName(`advertising`)[0].checked) {
+      document.cookie = `${COOKIE_NAME}_allow_advertising_cookies=true; expires= ${date}`;
+    }
+  }
+}
+
+const setAnalyticCookie = date => {
+  if (document.getElementsByName(`analytic`)[0].checked) {
+    document.cookie = `${COOKIE_NAME}_allow_analytic_cookies=true; expires= ${date}`;
+  }
 }
 
 const closePopup = () => {
@@ -145,9 +150,9 @@ const cookiesAlreadyExist = () => {
   return cookiesExist;
 };
 
-const buildHTML = (popupBody, slide) => {
+const buildHTML = (popupBody, slideFromLeft) => {
   let html = `<div id="consent-container" class="dwp-consent-container`;
-  if (slide) {
+  if (slideFromLeft) {
     html += ` dwp-consent-container-left">`;
   } else {
     html += ` dwp-consent-container-top">`;
@@ -159,7 +164,7 @@ const buildHTML = (popupBody, slide) => {
 
 window.onload = () => {
   let initialised = false;
-  let slide = false;
+  let slideFromLeft = false;
   let advertising = false;
 
   if (!cookiesAlreadyExist()) {
@@ -173,8 +178,8 @@ window.onload = () => {
     let _class = parms[0].getAttribute(`class`);
     let cookiesPage = parms[0].getAttribute(`cookiesPage`);
 
-    if (_class.includes(`slide`)) {
-      slide = true;
+    if (_class.includes(`slide-from-left`)) {
+      slideFromLeft = true;
     };
 
     if (_class.includes(`advertising`)) {
@@ -183,12 +188,8 @@ window.onload = () => {
 
     if (!initialised) {
       initialised = true;
-      let html = buildHTML(buildPopupBody(cookiesPage, advertising), slide);
+      let html = buildHTML(buildPopupBody(cookiesPage, advertising), slideFromLeft);
       document.body.innerHTML = document.body.innerHTML + html;
-      if (advertising) {
-        changeAdvertising();
-      }
-      changeAnalytics();
     }
 
   }
