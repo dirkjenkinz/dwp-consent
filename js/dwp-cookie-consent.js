@@ -26,6 +26,9 @@ const ourUse = cookiesPage => {
   seg += `A cookie is a small file which we store on your device for a short time to make this service work.`;
   seg += `</p>`;
   seg += `<p>`;
+  seg += `By continuing to use this site, you agree to our use of cookies.`;
+  seg += '<p>';
+  seg += `<br><p>`;
   seg += `We use cookies that are:`;
   seg += `</p>`;
   seg += `<ul class="govuk-list govuk-list--bullet">`;
@@ -57,7 +60,7 @@ const optionalCookieSettings = () => {
 
 const analyticCookies = () => {
   let seg = `<h3 class="govuk-heading-m">`;
-  seg += `Analytics cookies`;
+  seg += `<br>Analytics cookies`;
   seg += `</h3>`;
   seg += `<p>`;
   seg += `We use analytics software to get information about how you use this service and help us make it better.`;
