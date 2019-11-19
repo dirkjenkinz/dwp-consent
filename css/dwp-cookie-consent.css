@@ -2,17 +2,11 @@
     background-color: white;
     color: black;
     padding: 5px 10px;
-    font-size: 12px;
     line-height: 1.2em;
     display: none;
     z-index: 9999999;
     border: black 2px solid;
     display: block;
-}
-
-.banner {
-  background:black;
-  color: white;
 }
 
 .dwp-consent-container-top {
@@ -21,7 +15,7 @@
     left: 0;
     right: 0;
     margin-left: 400px;
-    width: 30%;
+    width: 50%;
 }
 
 .dwp-consent-container-left {
@@ -29,7 +23,7 @@
     top: 0;
     left: 0;
     right: 0;
-    width: 30%;
+    width: 40%;
     height: 100%;
     -webkit-animation-name: slide-from-left;
     -webkit-animation-duration: .6s;
@@ -55,22 +49,6 @@
     }
 }
 
-.heading-large {
-    padding: 0;
-    margin: 0;
-
-}
-
-.heading-medium {
-    text-align: left;
-    padding: 0;
-}
-
-.heading-small {
-    text-align: left;
-    padding: 0;
-}
-
 .fact {
     margin: 10px;
 }
@@ -86,29 +64,3 @@
     margin-top: 10px;
 }
 
-#save-and-close :hover {
-    background: #226600;
-}
-
-.inline {
-  border: 0;
-}
-
-.block-label {
-  margin-right:40px;
-  font-size: 120%;
-}
-
-input[type='radio'] { 
-  transform: scale(2); 
-  margin: 20px;
-}
-
-.form-hint {
-  color: grey;
-  font-size: 120%;
-}
-
-fieldset {
-   border:0 none;
-}
