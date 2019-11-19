@@ -43,15 +43,15 @@ const ourUse = cookiesPage => {
   seg += `<p>`;
   seg += `For more detailed information about the cookies we use, see our `;
   seg += `<a href="${cookiesPage}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`;
-  seg += `</p>`;
+  seg += `</p><br>`;
   return seg;
 }
 
 const optionalCookieSettings = () => {
-  let seg = `<br><h2 class="govuk-heading-l">Optional cookie settings</h2>`;
+  let seg = `<h2 class="govuk-heading-l">Optional cookie settings</h2>`;
   seg += `<p>`;
   seg += `You can change the settings on this page at any time.`;
-  seg += `</p><br>`;
+  seg += `</p>`;
   return seg;
 }
 
@@ -77,7 +77,7 @@ const analyticCookies = () => {
   seg += `</label>`;
   seg += `</div>`;
   seg += `<div class="govuk-radios__item">`;
-  seg += `<input class="govuk-radios__input" id="analytic-no" name="analytics" type="radio" value="no">`;
+  seg += `<input class="govuk-radios__input" id="analytic-no" name="analytic" type="radio" value="no">`;
   seg += `<label class="govuk-label govuk-radios__label" for="analytic-no">`;
   seg += `No`;
   seg += `</label>`;
