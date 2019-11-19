@@ -2,11 +2,8 @@
 
 const COOKIE_NAME = "DWP";
 
-const buildPopupBody = (cookiesPage, advertising) => {
-  if (!cookiesPage || cookiesPage === ``) {
-    cookiesPage = `https://www.gov.uk/help/cookie-details`;
-  }
-  
+const buildPopupBody = (parameters) => {
+  let { cookiesPage, advertising } = parameters
   let pBody = `<div class="fact">`;
   pBody += ourUse(cookiesPage, advertising);
   pBody += analyticCookies();
@@ -19,7 +16,7 @@ const buildPopupBody = (cookiesPage, advertising) => {
   return pBody;
 }
 
-const ourUse = (cookiesPage, advertising) => {
+const ourUse = (cookiesPage) => {
   let seg = `<div class="inside-fact">`;
   seg += `<div class="heading-large header"><h1>How we use cookies</h1></div>`;
   seg += `<p>`;
@@ -142,17 +139,19 @@ document.addEventListener(`click`, e => {
   };
 });
 
-const cookiesAlreadyExist = () => {
-  let nameLength = COOKIE_NAME.length;
-  let cookiesExist = false;
+const findExistingCookies = () => {
+  const analytic = `${COOKIE_NAME}_allow_analytic_cookies=true`;
+  const advertising = `${COOKIE_NAME}_allow_advertising_cookies=true`;
   let cookies = document.cookie.split(`;`);
   for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i].trim();
-    if (cookie.substring(0, nameLength) === COOKIE_NAME) {
-      cookiesExist = true;
+    if (cookie === advertising) {
+      document.getElementsByName(`advertising`)[0].checked = true;
+    }
+    if (cookie === analytic) {
+      document.getElementsByName(`analytic`)[0].checked = true;
     }
   }
-  return cookiesExist;
 };
 
 const buildHTML = (popupBody, slideFromLeft) => {
@@ -167,35 +166,36 @@ const buildHTML = (popupBody, slideFromLeft) => {
   return html;
 };
 
-window.onload = () => {
-  let initialised = false;
-  let slideFromLeft = false;
-  let advertising = false;
+const getParameters = () => {
+  let parameters = { retention: 0, slideFromLeft: false, advertising: false, cookiesPage: `https://www.gov.uk/help/cookie-details` };
+  let parms = document.getElementsByClassName(`dwp-consent`);
+  let _class = parms[0].getAttribute(`class`);
+  let cookiesPage = parms[0].getAttribute(`cookiesPage`);
 
-  if (!cookiesAlreadyExist()) {
-    let parms = document.getElementsByClassName(`dwp-consent`);
-    let retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
-    let d = new Date();
-    d.setDate(d.getDate() + retention);
-    let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
-    document.cookie = DWPCookie;
-
-    let _class = parms[0].getAttribute(`class`);
-    let cookiesPage = parms[0].getAttribute(`cookiesPage`);
-
-    if (_class.includes(`slide-from-left`)) {
-      slideFromLeft = true;
-    };
-
-    if (_class.includes(`advertising`)) {
-      advertising = true;
-    }
-
-    if (!initialised) {
-      initialised = true;
-      let html = buildHTML(buildPopupBody(cookiesPage, advertising), slideFromLeft);
-      document.body.innerHTML = document.body.innerHTML + html;
-    }
-
+  if (cookiesPage) {
+    parameters.cookiesPage = cookiesPage
   }
+
+  parameters.retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
+
+  if (_class.includes(`slide-from-left`)) {
+    parameters.slideFromLeft = true;
+  };
+
+  if (_class.includes(`advertising`)) {
+    parameters.advertising = true;
+  }
+
+  return parameters;
+}
+
+window.onload = () => {
+  let parameters = getParameters();
+  let d = new Date();
+  d.setDate(d.getDate() + parameters.retention);
+  let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
+  document.cookie = DWPCookie;
+  let html = buildHTML(buildPopupBody(parameters), parameters.slideFromLeft);
+  document.body.innerHTML = document.body.innerHTML + html;
+  findExistingCookies();
 };
