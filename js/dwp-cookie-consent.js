@@ -115,6 +115,8 @@ const setAdvertisingCookie = date => {
   if (_class.includes(`advertising`)) {
     if (document.getElementsByName(`advertising`)[0].checked) {
       document.cookie = `${COOKIE_NAME}_allow_advertising_cookies=true; expires= ${date}`;
+    } else {
+      document.cookie = `${COOKIE_NAME}_allow_advertising_cookies=false; expires= ${date}`;
     }
   }
 }
@@ -122,6 +124,8 @@ const setAdvertisingCookie = date => {
 const setAnalyticCookie = date => {
   if (document.getElementsByName(`analytic`)[0].checked) {
     document.cookie = `${COOKIE_NAME}_allow_analytic_cookies=true; expires= ${date}`;
+  } else {
+    document.cookie = `${COOKIE_NAME}_allow_analytic_cookies=false; expires= ${date}`;
   }
 }
 
