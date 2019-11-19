@@ -1,60 +1,17 @@
 .dwp-consent-container {
-    background-color: white;
+    background: white;
     color: black;
-    padding: 5px 10px;
+    padding: 5px 20px;
     line-height: 1.2em;
     display: none;
     z-index: 9999999;
     border: black 2px solid;
     display: block;
-}
-
-.dwp-consent-container-top {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
-    margin-left: 400px;
-    width: 50%;
-}
-
-.dwp-consent-container-left {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 40%;
-    height: 100%;
-    -webkit-animation-name: slide-from-left;
-    -webkit-animation-duration: .6s;
-    animation-name: slide-from-left;
-    animation-duration: .6s;
-}
-
-@-webkit-keyframes slide-from-left {
-    from {
-        left: -80%;
-    }
-    to {
-        left: 0;
-    }
-}
-
-@keyframes slide-from-left {
-    from {
-        left: -80%;
-    }
-    to {
-        left: 0;
-    }
-}
-
-.fact {
-    margin: 10px;
-}
-
-.inside-fact {
-    padding: 0 15px 10px 10px;
+    left: 25%;
+    width: 45%;
 }
 
 #save-and-close {

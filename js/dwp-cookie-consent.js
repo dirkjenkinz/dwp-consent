@@ -18,7 +18,7 @@ const ourUse = cookiesPage => {
   let seg = `<div class="govuk-width-container">`;
   seg += `<main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">`;
   seg += `<div class="govuk-grid-row">`;
-  seg += `<div class="govuk-grid-column-two-thirds">`;
+  seg += `<div class="govuk-grid-column-three-quarters">`;
   seg += `<h1 class="govuk-heading-xl">`;
   seg += `How we use cookies`;
   seg += `</h1>`;
@@ -40,7 +40,7 @@ const ourUse = cookiesPage => {
   seg += `<li>use any optional cookies unless you tell us we can</li>`;
   seg += `<li>be able identify you through using cookies</li>`;
   seg += `</ul>`;
-  seg += `<br><p>`;
+  seg += `<p>`;
   seg += `For more detailed information about the cookies we use, see our `;
   seg += `<a href="${cookiesPage}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`;
   seg += `</p>`;
@@ -48,58 +48,58 @@ const ourUse = cookiesPage => {
 }
 
 const optionalCookieSettings = () => {
-  let seg = `<h2 class="govuk-heading-l">Optional cookie settings</h2>
-      <p>
-        You can change the settings on this page at any time.
-      </p>`;
+  let seg = `<br><h2 class="govuk-heading-l">Optional cookie settings</h2>`;
+  seg += `<p>`;
+  seg += `You can change the settings on this page at any time.`;
+  seg += `</p><br>`;
   return seg;
 }
 
 const analyticCookies = () => {
-  let seg = `<h3 class="govuk-heading-m">
-        Analytics cookies
-      </h3>
-      <p>
-        We use analytics software to get information about how you use this service and help us make it better.
-      </p>
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-    <h3 class="govuk-fieldset__heading">
-      Can we use analytics cookies to help us improve this service?
-    </h3>
-  </legend>
-  <div class="govuk-radios govuk-radios--inline">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">
-          <label class="govuk-label govuk-radios__label" for="analytic-yes">
-        Yes
-      </label>
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="analytic-no" name="analytics" type="radio" value="no">
-          <label class="govuk-label govuk-radios__label" for="analytic-no">
-        No
-      </label>
-        </div>
-  </div>
-  </fieldset>
-</div>`
+  let seg = `<h3 class="govuk-heading-m">`;
+  seg += `Analytics cookies`;
+  seg += `</h3>`;
+  seg += `<p>`;
+  seg += `We use analytics software to get information about how you use this service and help us make it better.`;
+  seg += `</p>`;
+  seg += `<div class="govuk-form-group">`;
+  seg += `<fieldset class="govuk-fieldset">`;
+  seg += `<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">`;
+  seg += `<h3 class="govuk-fieldset__heading">`;
+  seg += `Can we use cookies to help us improve this service?`;
+  seg += `</h3>`;
+  seg += `</legend>`;
+  seg += `<div class="govuk-radios govuk-radios--inline">`;
+  seg += `<div class="govuk-radios__item">`;
+  seg += `<input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">`;
+  seg += `<label class="govuk-label govuk-radios__label" for="analytic-yes">`;
+  seg += `Yes`;
+  seg += `</label>`;
+  seg += `</div>`;
+  seg += `<div class="govuk-radios__item">`;
+  seg += `<input class="govuk-radios__input" id="analytic-no" name="analytics" type="radio" value="no">`;
+  seg += `<label class="govuk-label govuk-radios__label" for="analytic-no">`;
+  seg += `No`;
+  seg += `</label>`;
+  seg += `</div>`;
+  seg += `</div>`;
+  seg += `</fieldset>`;
+  seg +=`</div >`;
   return seg;
 };
 
 const advertisingCookies = () => {
   let seg = `<h3 class="govuk-heading-m">`;
   seg += `Advertising cookies`;
-  seg += `</h3>`;
+  seg += `</h3> `;
   seg += `<p>`;
   seg += `Sometimes we may use cookies that help us with our communications and marketing.`;
-  seg += `</p>`;
-  seg += `<div class="govuk-form-group">`;
-  seg += `<fieldset class="govuk-fieldset">`;
-  seg += `<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">`;
-  seg += `<h1 class="govuk-fieldset__heading">`;
-  seg += `Can we use cookies to help us improve this service?'`;
+  seg += `</p> `;
+  seg += `<div class="govuk-form-group" >`;
+  seg += `<fieldset class="govuk-fieldset" > `;
+  seg += `<legend class="govuk-fieldset__legend govuk-fieldset__legend--s" >`;
+  seg += `<h1 class="govuk-fieldset__heading" > `;
+  seg += `Can we use cookies to help us with our communications and marketing?`;
   seg += `</h1>`;
   seg += `</legend>`;
   seg += `<div class="govuk-radios govuk-radios--inline">`;
@@ -201,13 +201,8 @@ const findExistingCookies = () => {
   }
 };
 
-const buildHTML = (popupBody, slideFromLeft) => {
-  let html = `<div id="consent-container" class="dwp-consent-container`;
-  if (slideFromLeft) {
-    html += ` dwp-consent-container-left">`;
-  } else {
-    html += ` dwp-consent-container-top">`;
-  }
+const buildHTML = (popupBody) => {
+  let html = `<div id="consent-container" class="dwp-consent-container">`;
   html += `<div class="dwp-consent-body">${popupBody}</div>`;
   html += `</div>`;
   return html;
@@ -225,10 +220,6 @@ const getParameters = () => {
 
   parameters.retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
 
-  if (_class.includes(`slide-from-left`)) {
-    parameters.slideFromLeft = true;
-  };
-
   if (_class.includes(`advertising`)) {
     parameters.advertising = true;
   }
@@ -238,11 +229,10 @@ const getParameters = () => {
 
 window.onload = () => {
   let parameters = getParameters();
-  let d = new Date();
-  d.setDate(d.getDate() + parameters.retention);
-  let DWPCookie = `${COOKIE_NAME}_retention_date=${d}; expires= ${d}`;
-  document.cookie = DWPCookie;
-  let html = buildHTML(buildPopupBody(parameters), parameters.slideFromLeft);
+  let date = new Date();
+  date.setDate(date.getDate() + parameters.retention);
+  document.cookie = `${COOKIE_NAME}_allow_essential_cookies=true; expires= ${date}`;
+  let html = buildHTML(buildPopupBody(parameters));
   document.body.innerHTML = document.body.innerHTML + html;
   findExistingCookies();
 };

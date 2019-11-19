@@ -22,9 +22,6 @@ Then add the dwp-consent class to any HTML element:
 The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "cookiesPage" in the element:
     <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
 
-By default, the pop-up is attached to the top centre of the page. To have it slide in from the left, use the "slide-from-left" parameter:
-    <div class="dwp-consent slide-from-left">
-
 To ask the user for consent to use advertising cookies, use the "advertising" parameter:
     <div class="dwp-consent advertising">
 
