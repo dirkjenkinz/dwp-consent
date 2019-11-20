@@ -32,22 +32,21 @@ By default, the retention period for the cookie set by this tool is 28 days. To 
 When invoked, dwp-cookie-consent looks for cookies beginning with 'DWP';
 If no DWP cookies are found, a pop-up is displayed.
 The pop-up explains our use of cookies and asks for permission to set cookies for advertising and analytic purposes.
-The default in each case is 'no'.
-Any positive reponses are recorded in a cookie and the popup disappears.
+The default in both theses cases is 'no'.
+Responses are recorded as true and force in cookie and the popup disappears.
 
 ----------------------------------
 
 The cookies are:
-    DWP_retention_date  (always set and used to indicate that the user has been informed and asked about our use of cookies)
+    DWP_allow_essential_cookies
     DWP_allow_advertising_cookies - set to true if permission to use advertising cookies is given
     DWP_allow_analytic_cookies - set to true if permission to use analytic cookies is given
-x
+
 ----------------------------------
 
 The cookies expire after 28 days unless another retention period has been set.
 
 ----------------------------------
-
 
 NB: 
  This is a prototype.                                                           
