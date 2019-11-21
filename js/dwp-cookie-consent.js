@@ -2,7 +2,8 @@
 const saveAndContinue = () => {
   let parameters = getParameters();
   let date = new Date();
-  date.setDate(date.getDate() + parameters.date);
+  date.setDate(date.getDate() + parameters.retention);
+
   document.cookie = `DWP_allow_essential_cookies=true; expires= ${date}`;
   setAdvertisingCookie(date);
   setAnalyticCookie(date);
@@ -11,9 +12,9 @@ const saveAndContinue = () => {
 
 const setAdvertisingCookie = date => {
   if (document.getElementById(`advertising-yes`).checked) {
-    document.cookie = `DWP_allow_advertising_cookies=true; expires= ${date}`;
+    document.cookie = `DWP_allow_advertising_cookies=true; expires=${date}`;
   } else {
-    document.cookie = `DWP_allow_advertising_cookies=false; expires= ${date}`;
+    document.cookie = `DWP_allow_advertising_cookies=false; expires=${date}`;
   }
 }
 
@@ -30,24 +31,17 @@ const closePage = () => {
 };
 
 const findExistingCookies = () => {
-  const analytic_true = `DWP_allow_analytic_cookies=true`;
-  const advertising_true = `DWP_allow_advertising_cookies=true`;
-  const analytic_false = `DWP_allow_analytic_cookies=false`;
-  const advertising_false = `DWP_allow_advertising_cookies=false`;
+  let cookieDetails = { analytic: false, advertising: false }
   let cookies = document.cookie.split(`;`);
   for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
-    if (cookie === advertising_true) {
-      document.getElementById(`advertising-yes`).checked = true;
-    } else if (cookie === advertising_false) {
-      document.getElementById(`advertising-no`).checked = true;
-    }
-    if (cookie === analytic_true) {
-      document.getElementById(`analytic-yes`).checked = true;
-    } else if (cookie === analytic_false) {
-      document.getElementById(`analytic-no`).checked = true;
+    let cookie = cookies[i].trim().split(`=`);
+    if (cookie[0] === `DWP_allow_analytic_cookies` && cookie[1] === 'true'){
+      cookieDetails.analytic = true;
+    } else  if (cookie[0] === `DWP_allow_advertising_cookies` && cookie[1] === 'true'){
+      cookieDetails.advertising = true;
     }
   }
+  return cookieDetails;
 };
 
 const dismissBanner = () => {
@@ -61,13 +55,22 @@ const changeCookies = () => {
 }
 
 const showBanner = () => {
+  let { analytic, advertising } = findExistingCookies();
   let banner = `<div id="cookie-banner" style="background-color:white;color:green;padding:10px 200px; border:1px solid black;">`;
   banner += `<h2 style="text-align: center">About your cookies.</h2>`;
   banner += `<p>`
   banner += `<span style="margin-right:20px">Your cookies are set as follows: </span>`
   banner += `<span style="margin-right:60px">Essential cookies: Allowed.</span>`;
-  banner += `<span style="margin-right:60px">Analytic cookies: Allowed.</span>`;
-  banner += `<span>Advertising cookies: Allowed.</span></p>`;
+  if (analytic) {
+    banner += `<span style="margin-right:60px">Analytic cookies: Allowed.</span>`;
+  } else {
+    banner += `<span style="margin-right:60px">Analytic cookies: Disllowed.</span>`;
+  };
+  if (advertising) {
+    banner += `<span>Advertising cookies: Allowed.</span></p>`;
+  } else {
+    banner += `<span>Advertising cookies: Disallowed.</span></p>`;
+  };
   banner += `<p>Do you wish to change your cookie permissions?`;
   banner += `<button id="change-cookie-permissions" aria-label="Change" onclick="changeCookies()"`;
   banner += ` style="background:white; font-size: 110%;margin-left:20px; color:green; border:2px solid green; padding: 10px;"`
@@ -86,7 +89,6 @@ const showBanner = () => {
 
 const goToCookiesPage = (retention) => {
   window.open(`consent.html`, `_self`);
-  findExistingCookies();
   dismissBanner();
 }
 
@@ -118,7 +120,7 @@ window.onload = () => {
     }
   }
   if (!cookiesExist) {
-    document.cookie = `DWP_cookies_page=${parameters.cookiesPage}`;
+    document.cookie = `DWP_cookies_page=${cookiesPage}`;
     goToCookiesPage();
   } else {
     showBanner();
