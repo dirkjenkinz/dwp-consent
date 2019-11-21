@@ -3,7 +3,6 @@ const saveAndContinue = () => {
   let parameters = getParameters();
   let date = new Date();
   date.setDate(date.getDate() + parameters.retention);
-
   document.cookie = `DWP_allow_essential_cookies=true; expires= ${date}`;
   setAdvertisingCookie(date);
   setAnalyticCookie(date);
@@ -95,20 +94,21 @@ const goToCookiesPage = (retention) => {
 const getParameters = () => {
   let parameters = { retention: 28, cookiesPage: `https://www.gov.uk/help/cookie-details` };
   let parms = document.getElementsByClassName(`dwp-consent`);
-  if (parms > 0) {
+  if (parms.length > 0) {
     let _class = parms[0].getAttribute(`class`);
     let cookiesPage = parms[0].getAttribute(`cookiesPage`);
     if (cookiesPage) {
       parameters.cookiesPage = cookiesPage
     }
     parameters.retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
+    parameters.serviceName = parms[0].getAttribute(`service-name`) || null;
   }
   return parameters;
 }
 
 window.onload = () => {
   let parameters = getParameters();
-  let { retention, cookiesPage } = parameters;
+  let { retention, cookiesPage, serviceName } = parameters;
   let date = new Date();
   date.setDate(date.getDate() + retention);
   let cookiesExist = false;
@@ -119,8 +119,9 @@ window.onload = () => {
       cookiesExist = true;
     }
   }
+  document.cookie = `DWP_cookies_page=${cookiesPage}`;
+    document.cookie = `DWP_service=${serviceName}`;
   if (!cookiesExist) {
-    document.cookie = `DWP_cookies_page=${cookiesPage}`;
     goToCookiesPage();
   } else {
     showBanner();

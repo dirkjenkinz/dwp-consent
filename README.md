@@ -25,7 +25,7 @@ The cookies page defaults to https://www.gov.uk/help/cookie-details. To override
 To ask the user for consent to use advertising cookies, use the "advertising" parameter:
     <div class="dwp-consent advertising">
 
-By default, the retention period for the cookie set by this tool is 28 days. To override this, include "retention-period="[days]" in the element, where [days] = number of days to retain the cookie.
+By default, the retention period for the cookie set by this tool is 28 days. To override this, include "retention-period=[days] in the element, where [days] = number of days to retain the cookie.
 
 ---------------------------------
 
