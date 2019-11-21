@@ -32,6 +32,7 @@ const closePage = () => {
 const findExistingCookies = () => {
   let cookieDetails = { analytic: false, advertising: false }
   let cookies = document.cookie.split(`;`);
+  console.log(cookies)
   for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i].trim().split(`=`);
     if (cookie[0] === `DWP_allow_analytic_cookies` && cookie[1] === 'true'){
