@@ -18,6 +18,10 @@ Import jquery & the dwp-cookie-consent files (one javaScript & one CSS styleshee
 Then add the dwp-consent class to any HTML element:
     <div class=”dwp-consent”>
 
+---------------------------------
+
+OPTIONAL PARAMETERS:
+
 The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "cookiesPage" in the element:
     <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
 
@@ -28,6 +32,9 @@ By default, no header showing the service name or footer is added to the cookies
     <div class="dwp-consent" service-name="DWP Carers Allowance">
 To add a footer:
     <div class="dwp-consent" footer>
+
+To display the page and banner in Welsh, add "welsh" to the class.
+    <div class="dwp-consent" welsh>
 
 ---------------------------------
 
