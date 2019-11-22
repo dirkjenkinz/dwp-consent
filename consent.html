@@ -2,98 +2,101 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="./css/govuk.css">
-    <title>DWP: Cookie Consent</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./css/govuk.css">
+  <title>DWP: Cookie Consent</title>
 </head>
 
 <body>
-    <div id="header-space"></div>
-    <div class="govuk-width-container">
-        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-three-quarters">
-                    <h1 class="govuk-heading-xl">
-                        How we use cookies
-                    </h1>
-                    <p>A cookie is a small file which we store on your device for a short time to make this service work.</p>
-                    <p>By continuing to use this site, you agree to our use of cookies.</p>
-                    <br>
-                    <p>We use cookies that are:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>essential - these make the service work, for example by remembering your answers to certain questions
-                        </li>
-                        <li>optional - these will not stop the service from working, but will give us information to help us make it better
-                        </li>
-                    </ul>
-                    <p>We will not:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>use any essential cookies until you use the service</li>
-                        <li>use any optional cookies unless you tell us we can</li>
-                        <li>be able identify you through using cookies</li>
-                    </ul>
-                    <p>
-                        For more detailed information about the cookies we use, see our
-                        <span id="cookies-page"></span>
-                    </p>
-                    <br>
-                    <h2 class="govuk-heading-l">Optional cookie settings</h2>
-                    <p>You can change the settings on this page at any time.</p>
-                    <h3 class="govuk-heading-m"><br>Analytics cookies</h3>
-                    <p>We use analytics software to get information about how you use this service and help us make it better.</p>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                <h3 class="govuk-fieldset__heading">Can we use cookies to help us improve this service?</h3>
-                            </legend>
-                            <div class="govuk-radios govuk-radios--inline">
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">
-                                    <label class="govuk-label govuk-radios__label" for="analytic-yes">Yes</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="analytic-no" name="analytic" type="radio" value="no">
-                                    <label class="govuk-label govuk-radios__label" for="analytic-no">No</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <h3 class="govuk-heading-m">Advertising cookies</h3>
-                    <p>Sometimes we may use cookies that help us with our communications and marketing.</p>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                <h1 class="govuk-fieldset__heading">Can we use cookies to help us with our communications and marketing?
-                                </h1>
-                            </legend>
-                            <div class="govuk-radios govuk-radios--inline">
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="advertising-yes" name="advertising" type="radio" value="yes">
-                                    <label class="govuk-label govuk-radios__label" for="advertising-yes">Yes</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="advertising-no" name="advertising" type="radio" value="no">
-                                    <label class="govuk-label govuk-radios__label" for="advertising-no">No</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="saveAndContinue()">
+  <div id="header-space"></div>
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          <h1 class="govuk-heading-xl">
+            How we use cookies
+          </h1>
+          <p>A cookie is a small file which we store on your device for a short time to make this service work.</p>
+          <p>By continuing to use this site, you agree to our use of cookies.</p>
+          <br>
+          <p>We use cookies that are:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>essential - these make the service work, for example by remembering your answers to certain questions
+            </li>
+            <li>optional - these will not stop the service from working, but will give us information to help us make it
+              better
+            </li>
+          </ul>
+          <p>We will not:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>use any essential cookies until you use the service</li>
+            <li>use any optional cookies unless you tell us we can</li>
+            <li>be able identify you through using cookies</li>
+          </ul>
+          <p>
+            For more detailed information about the cookies we use, see our
+            <span id="cookies-page"></span>
+          </p>
+          <br>
+          <h2 class="govuk-heading-l">Optional cookie settings</h2>
+          <p>You can change the settings on this page at any time.</p>
+          <h3 class="govuk-heading-m"><br>Analytics cookies</h3>
+          <p>We use analytics software to get information about how you use this service and help us make it better.</p>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h3 class="govuk-fieldset__heading">Can we use cookies to help us improve this service?</h3>
+              </legend>
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="analytic-yes">Yes</label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="analytic-no" name="analytic" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="analytic-no">No</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <h3 class="govuk-heading-m">Advertising cookies</h3>
+          <p>Sometimes we may use cookies that help us with our communications and marketing.</p>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">Can we use cookies to help us with our communications and marketing?
+                </h1>
+              </legend>
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="advertising-yes" name="advertising" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="advertising-yes">Yes</label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="advertising-no" name="advertising" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="advertising-no">No</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal"
+            aria-label="Close" onclick="saveAndContinue()">
             Save and continue
           </button>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="./js/dwp-cookie-consent.js"></script>
-    <script>
-        window.onload = () => {
-            dismissBanner();
-            initialiseConsentPage();
-        }
-    </script>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="footer-space"></div>
+  <script src="./js/dwp-cookie-consent.js"></script>
+  <script>
+    window.onload = () => {
+      dismissBanner();
+      initialiseConsentPage();
+    }
+  </script>
 </body>
 
 </html>
