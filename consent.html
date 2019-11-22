@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="banner-space"></div>
+    <div id="header-space"></div>
     <div class="govuk-width-container">
         <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
             <div class="govuk-grid-row">
@@ -91,36 +91,7 @@
     <script>
         window.onload = () => {
             dismissBanner();
-            let cookiesPage = `https://www.gov.uk/help/cookie-details`;
-            let service = null;
-            let cookies = document.cookie.split(`;`);
-            document.getElementById(`analytic-no`).checked = true;
-            document.getElementById(`advertising-no`).checked = true;
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim().split(`=`);
-                if (cookie[0] === `DWP_service`) {
-                    service = cookie[1]
-                }
-                if (cookie[0] === `DWP_cookies_page`) {
-                    cookiesPage = cookie[1]
-                }
-                if (cookie[0] === `DWP_allow_advertising_cookies`) {
-                    if (cookie[1] === `true`) {
-                        document.getElementById(`advertising-yes`).checked = true;
-                    }
-                }
-                if (cookie[0] === `DWP_allow_analytic_cookies`) {
-                    if (cookie[1] === `true`) {
-                        document.getElementById(`analytic-yes`).checked = true;
-                    }
-                }
-            }
-            let cookiesPageText = `<a href="${cookiesPage}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`
-            document.getElementById(`cookies-page`).innerHTML = cookiesPageText;
-            if (service) {
-                let banner = `<div style="background:black; color:white; text-align:center; padding:20px 0;font-size:200%">${service}</div>`
-                document.getElementById(`banner-space`).innerHTML = banner;
-            }
+            initialiseConsentPage();
         }
     </script>
 </body>
