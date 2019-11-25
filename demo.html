@@ -2,29 +2,28 @@
 <html lang="en">
 
 <head>
-  <title>Cookie Consent</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/govuk.css">
-  <script src="./js/dwp-cookie-consent.js"></script>
-  <style>
-    #clear,
-    #reload {
-      background: black;
-      color: white;
-      border: 5px red solid;
-      border-radius: 5%;
-    }
-  </style>
+    <title>Cookie Consent</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./css/govuk.css">
+    <script src="./js/dwp-cookie-consent.js"></script>
+    <style>
+        #clear,
+        #reload {
+            background: black;
+            color: white;
+            border: 5px red solid;
+            border-radius: 5%;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="dwp-consent footer" service-name="Make a Claim for Carer's Allowance" retention-period=99></div>
+    <div class="dwp-consent footer" service-name="Make a Claim for Carer's Allowance" retention-period=99></div>
     <header class="govuk-header " role="banner" data-module="govuk-header">
-      <div class="govuk-header__container govuk-width-container">
-        <div class="govuk-header__logo">
-          <a href="/" class="govuk-header__link govuk-header__link--homepage">
-            <span class="govuk-header__logotype">
+        <div class="govuk-header__container govuk-width-container">
+            <div class="govuk-header__logo">
+                <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                    <span class="govuk-header__logotype">
               <svg role="presentation" focusable="false" class="govuk-header__logotype-crown"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 97" height="30" width="36">
                 <path fill="currentColor" fill-rule="evenodd"
@@ -36,54 +35,53 @@
               <span class="govuk-header__logotype-text">
                 GOV.UK
               </span></span>
-          </a>
+                </a>
+            </div>
+            <div class="govuk-header__content">
+                <a href="/" class="govuk-header__link govuk-header__link--service-name">Make a claim for Carers Allowance</a>
+            </div>
         </div>
-        <div class="govuk-header__content">
-          <a href="/" class="govuk-header__link govuk-header__link--service-name">Make a claim for Carers Allowance</a>
-        </div>
-      </div>
     </header>
 
     <div class="govuk-width-container">
-      <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-three-quarters">
-            <h1 class="govuk-heading-l">
-              Can you get Carer's Allowance?
-            </h1>
-            <br>
-            <h3 class="govuk-heading-m">What benefit does the person you're caring for get?</h3>
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset">
-                <div class="govuk-radios govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="dummy-1" name="dummy" type="radio" value="pip">
-                    <label class="govuk-label govuk-radios__label" for="dummy-1">Personal Independence Payment
+        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-three-quarters">
+                    <h1 class="govuk-heading-l">
+                        Can you get Carer's Allowance?
+                    </h1>
+                    <br>
+                    <h3 class="govuk-heading-m">What benefit does the person you're caring for get?</h3>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="dummy-1" name="dummy" type="radio" value="pip">
+                                    <label class="govuk-label govuk-radios__label" for="dummy-1">Personal Independence Payment
                       (PIP)</label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="dummy-2" name="dummy" type="radio" value="dla">
-                    <label class="govuk-label govuk-radios__label" for="dummy-2">Disability Living Allowance (DLA)
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="dummy-2" name="dummy" type="radio" value="dla">
+                                    <label class="govuk-label govuk-radios__label" for="dummy-2">Disability Living Allowance (DLA)
                     </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="dummy-3" name="dummy" type="radio" value="aa">
-                    <label class="govuk-label govuk-radios__label" for="dummy-3">Attendance Allowance (AA)</label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="dummy-4" name="dummy" type="radio" value="none">
-                    <label class="govuk-label govuk-radios__label" for="dummy-4">None of these benefits</label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-            <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal"
-              aria-label="Close" onclick="saveAndContinue()">
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="dummy-3" name="dummy" type="radio" value="aa">
+                                    <label class="govuk-label govuk-radios__label" for="dummy-3">Attendance Allowance (AA)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="dummy-4" name="dummy" type="radio" value="none">
+                                    <label class="govuk-label govuk-radios__label" for="dummy-4">None of these benefits</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="saveAndContinue()">
               Next
             </button>
-          </div>
-        </div>
-      </main>
+                </div>
+            </div>
+        </main>
     </div>
 
 </body>

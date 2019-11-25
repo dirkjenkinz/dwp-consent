@@ -6,14 +6,9 @@ Run demo.html to see it in action.
 
 To get started:
 
-Import jquery & the dwp-cookie-consent files (one javaScript & one CSS stylesheet):
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="./css/dwp-cookie-consent.css" />
+Import the cookie-consent javascript file and (if necessary) the govuk.css file and add them to the html of the calling page:
+    <link rel="stylesheet" type="text/css" href="./css/govuk.css"> 
     <script src="./js/dwp-cookie-consent.js"></script>
-
-      {NB: jQuery is only needed for the demo.html. The plug-in itself is written in vanilla JS}
-
 
 Then add the dwp-consent class to any HTML element:
     <div class=”dwp-consent”>
