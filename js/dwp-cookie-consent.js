@@ -1,6 +1,6 @@
 'use strict'
 const saveAndContinue = () => {
-console.log('saveandcontinue')
+    console.log('saveandcontinue')
     let parameters = getParameters();
     let date = new Date();
     date.setDate(date.getDate() + parameters.retention);
@@ -27,7 +27,7 @@ const setAnalyticCookie = date => {
 }
 
 const closePage = () => {
-    window.history.back()
+    window.history.back();
 };
 
 const findExistingCookies = () => {

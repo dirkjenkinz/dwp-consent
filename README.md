@@ -58,6 +58,3 @@ The cookies are:
 The cookies expire after 28 days unless a different retention period has been set.
 
 ----------------------------------
-
-NB: 
- A future version will allow for Welsh to be used as the language of the popup.
