@@ -1,5 +1,6 @@
 'use strict'
 const saveAndContinue = () => {
+console.log('saveandcontinue')
     let parameters = getParameters();
     let date = new Date();
     date.setDate(date.getDate() + parameters.retention);
@@ -84,7 +85,7 @@ const showBanner = () => {
     banner += `</p>`;
     banner += `</div>`;
 
-    document.getElementById(`banner-here`).innerHTML = banner;
+    document.body.innerHTML = banner + document.body.innerHTML;
 }
 
 const showWelshBanner = () => {
