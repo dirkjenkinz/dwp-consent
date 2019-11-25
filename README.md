@@ -7,6 +7,7 @@ Run demo.html to see it in action.
 To get started:
 
 Import the cookie-consent javascript file and (if necessary) the govuk.css file and add them to the html of the calling page:
+    
     <link rel="stylesheet" type="text/css" href="./css/govuk.css"> 
     <script src="./js/dwp-cookie-consent.js"></script>
 
