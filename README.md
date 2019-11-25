@@ -56,6 +56,8 @@ If there are DWP cookies already, a banner appears at the top of the page tellin
 ----------------------------------
 
 The cookies are:
+
+
     DWP_allow_essential_cookies
     DWP_allow_advertising_cookies - set to true if permission to use advertising cookies is given
     DWP_allow_analytic_cookies - set to true if permission to use analytic cookies is given
