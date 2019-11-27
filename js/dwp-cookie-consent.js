@@ -274,7 +274,9 @@ const buildFooter = () => {
         </span>
       </div>
       <div class="govuk-footer__meta-item">
-        <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+        <a class="govuk-footer" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">
+          <img src="../images/govuk-crest-2x.png" alt="crest" width="200"></img><br><br>© Crown copyright
+        </a>
       </div>
     </div>
   </div>
