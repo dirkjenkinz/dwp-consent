@@ -132,18 +132,19 @@ const goToCookiesPage = () => {
 const getParameters = () => {
     let parameters = { retention: 28, cookiesPage: `https://www.gov.uk/help/cookie-details`, footer: false, welsh: false };
     let parms = document.getElementsByClassName(`dwp-consent`);
+    console.log(parms)
     if (parms.length > 0) {
         let _class = parms[0].getAttribute(`class`);
-        let cookiesPage = parms[0].getAttribute(`cookiesPage`);
+        let cookiesPage = parms[0].getAttribute(`dwp-consent-cookies-page`);
         if (cookiesPage) {
             parameters.cookiesPage = cookiesPage
         }
-        parameters.retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
-        parameters.serviceName = parms[0].getAttribute(`service-name`) || null;
-        if (_class.includes('add-footer')) {
+        parameters.retention = parseInt(parms[0].getAttribute(`dwp-consent-retention-period`)) || 28;
+        parameters.serviceName = parms[0].getAttribute(`dwp-consent-service-name`) || null;
+        if (_class.includes('dwp-consent-add-footer')) {
             parameters.footer = true;
         }
-        if (_class.includes('welsh')) {
+        if (_class.includes('dwp-consent-welsh')) {
             parameters.welsh = true;
         }
     }

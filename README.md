@@ -10,38 +10,40 @@ Import the cookie-consent javascript file and (if necessary) the govuk.css file 
     
     
     <script src="./js/dwp-cookie-consent.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/govuk.css"> 
+    <link rel="stylesheet" type="text/css" href="./css/govuk.css">
 
-Then add the dwp-consent class to any HTML element:
 
-    <div class=”dwp-consent”>
+    Then include the "dwp-consent" class in an element:
+
+    <div class="dwp-consent">
+
 
 ---------------------------------
 
 OPTIONAL PARAMETERS:
 
-The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "cookiesPage" in the element:
+The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "dwp-consent-cookiesPage" in the element:
     
-    <div class="dwp-consent" cookiesPage="https://www.bbc.co.uk/">
+    <div class="dwp-consent dwp-consent-cookies-page="https://www.bbc.co.uk/">
 
 
-By default, the retention period for the cookie set by this tool is 28 days. To override this, include "retention-period=[days] in the element, where [days] = number of days to retain the cookie.
+By default, the retention period for the cookie set by this tool is 28 days. To override this, include "dwp-consent-retention-period=[days] in the element, where [days] = number of days to retain the cookie.
     
-    <div class="dwp-consent" retention-period=100>
+    <div dwp-consent dwp-consent-retention-period=45>
 
-By default, no header showing the service name or footer is added to the cookies consent page, as it is expected that this will be done by the app calling the page. However, if a header is required, "service-name=[service]" should be added to the div:
+By default, no header showing the service name or footer is added to the cookies consent page, as it is expected that this will be done by the app calling the page. However, if a header is required, "service-name=[service]" should be added to the element:
    
-    <div class="dwp-consent" service-name="DWP Carers Allowance">
+    <div dwp-consent dwp-consent-service-name="DWP Carers Allowance">
 
 
 To add a footer:
     
-    <div class="dwp-consent" footer>
+    <div class="dwp-consent dwp-consent-footer">
 
 
-To display the page and banner in Welsh, add "welsh" to the class.
+To display the page and banner in Welsh, add the "dwp-consent-welsh" class.
     
-    <div class="dwp-consent" welsh>
+    <div class="dwp-consent dwp-consent-welsh">
 
 ---------------------------------
 
