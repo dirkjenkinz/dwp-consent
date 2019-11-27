@@ -1,12 +1,10 @@
 'use strict'
 const saveAndContinue = () => {
-    console.log('saveandcontinue')
     let parameters = getParameters();
-    let date = new Date();
-    date.setDate(date.getDate() + parameters.retention);
-    document.cookie = `DWP_allow_essential_cookies=true; expires= ${date}`;
-    setAdvertisingCookie(date);
-    setAnalyticCookie(date);
+    let {expiry_date} = findExistingCookies();
+    document.cookie = `DWP_allow_essential_cookies=true; expires= ${expiry_date}`;
+    setAdvertisingCookie(expiry_date);
+    setAnalyticCookie(expiry_date);
     closePage();
 }
 
@@ -31,7 +29,7 @@ const closePage = () => {
 };
 
 const findExistingCookies = () => {
-    let cookieDetails = { analytic: false, advertising: false }
+    let cookieDetails = { analytic: false, advertising: false, expiry_date: 28 }
     let cookies = document.cookie.split(`;`);
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim().split(`=`);
@@ -39,6 +37,8 @@ const findExistingCookies = () => {
             cookieDetails.analytic = true;
         } else if (cookie[0] === `DWP_allow_advertising_cookies` && cookie[1] === 'true') {
             cookieDetails.advertising = true;
+        } else if (cookie[0] === `DWP_expiry_date`) {
+            cookieDetails.expiry_date = cookie[1];
         }
     }
     return cookieDetails;
@@ -84,7 +84,6 @@ const showBanner = () => {
     banner += `</button>`
     banner += `</p>`;
     banner += `</div>`;
-
     document.body.innerHTML = banner + document.body.innerHTML;
 }
 
@@ -118,7 +117,7 @@ const showWelshBanner = () => {
     banner += `</button>`
     banner += `</p>`;
     banner += `</div>`;
-    document.getElementById(`banner-here`).innerHTML = banner;
+    document.body.innerHTML = banner + document.body.innerHTML;
 }
 
 const goToCookiesPage = () => {
@@ -164,6 +163,7 @@ window.onload = () => {
             cookiesExist = true;
         }
     }
+    document.cookie = `DWP_expiry_date=${date}`;
     document.cookie = `DWP_cookies_page=${cookiesPage}`;
     document.cookie = `DWP_service=${serviceName}`;
     document.cookie = `DWP_footer=${footer}`;
@@ -180,9 +180,9 @@ window.onload = () => {
 };
 
 
-
-// consent page controls
-
+////////////////////////////
+// consent page controls //
+///////////////////////////
 const initialiseConsentPage = () => {
     let cookiesPage = 'https://www.gov.uk/help/cookie-details';
     let service = null;
@@ -218,7 +218,6 @@ const initialiseConsentPage = () => {
     if (service) {
         buildHeader(service);
     }
-
 
     if (footer) {
         buildFooter();
