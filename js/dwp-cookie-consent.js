@@ -1,7 +1,6 @@
 'use strict'
 const saveAndContinue = () => {
-    let parameters = getParameters();
-    let {expiry_date} = findExistingCookies();
+    let { expiry_date } = findExistingCookies();
     document.cookie = `DWP_allow_essential_cookies=true; expires= ${expiry_date}`;
     setAdvertisingCookie(expiry_date);
     setAnalyticCookie(expiry_date);
@@ -141,13 +140,14 @@ const getParameters = () => {
         }
         parameters.retention = parseInt(parms[0].getAttribute(`retention-period`)) || 28;
         parameters.serviceName = parms[0].getAttribute(`service-name`) || null;
-        if (_class.includes('footer')) {
+        if (_class.includes('add-footer')) {
             parameters.footer = true;
         }
         if (_class.includes('welsh')) {
             parameters.welsh = true;
         }
     }
+    console.log(parameters)
     return parameters;
 }
 
@@ -192,6 +192,7 @@ const initialiseConsentPage = () => {
     document.getElementById('advertising-no').checked = true;
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim().split(`=`);
+        console.log(cookie)
         if (cookie[0] === `DWP_service`) {
             service = cookie[1]
         }
@@ -199,7 +200,9 @@ const initialiseConsentPage = () => {
             cookiesPage = cookie[1]
         }
         if (cookie[0] === `DWP_footer`) {
-            footer = cookie[1]
+            if (cookie[1] === `true`) {
+                footer = true;
+            }
         }
         if (cookie[0] === `DWP_allow_advertising_cookies`) {
             if (cookie[1] === `true`) {
