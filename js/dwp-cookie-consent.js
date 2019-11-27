@@ -122,9 +122,9 @@ const showWelshBanner = () => {
 const goToCookiesPage = () => {
     let { welsh } = getParameters();
     if (welsh) {
-        window.open(`welsh-consent.html`, `_self`);
+        window.open(`../pages/welsh-consent.html`, `_self`);
     } else {
-        window.open(`consent.html`, `_self`);
+        window.open(`../pages/consent.html`, `_self`);
     }
     dismissBanner();
 }
@@ -286,4 +286,4 @@ const buildFooter = () => {
   </div>
 </footer>`
     document.getElementById(`footer-space`).innerHTML = footer;
-};
+}

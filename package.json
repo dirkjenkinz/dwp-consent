@@ -2,18 +2,11 @@
     "name": "dwp-consent",
     "version": "1.0.0",
     "description": "A javascript utility to create EU Cookie Law popups.",
-    "main": "",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/dirkjenkinz/dwp-consent.git"
     },
-    "author": "",
+    "author": "Patrick Whittaker",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/dirkjenkinz/dwp-consent/issues"
-    },
     "homepage": "https://github.com/dirkjenkinz/dwp-consent#readme"
 }
