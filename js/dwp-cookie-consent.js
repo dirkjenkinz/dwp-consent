@@ -186,14 +186,13 @@ window.onload = () => {
 ///////////////////////////
 const initialiseConsentPage = () => {
     let cookiesPage = 'https://www.gov.uk/help/cookie-details';
-    let service = null;
+    let service;
     let footer = false;
     let cookies = document.cookie.split(';');
     document.getElementById('analytic-no').checked = true;
     document.getElementById('advertising-no').checked = true;
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim().split(`=`);
-        console.log(cookie)
         if (cookie[0] === `DWP_service`) {
             service = cookie[1]
         }
@@ -219,7 +218,7 @@ const initialiseConsentPage = () => {
     let cookiesPageText = `<a href="${cookiesPage}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`
     document.getElementById(`cookies-page`).innerHTML = cookiesPageText;
 
-    if (service) {
+    if (service !== `null` && service !== `undefined`) {
         buildHeader(service);
     }
 
