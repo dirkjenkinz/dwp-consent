@@ -7,95 +7,75 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="../css/govuk.css">
     <script src="../js/dwp-cookie-consent.js"></script>
-  <title>DWP: Caniatâd cwci</title>
+    <title>DWP: Caniatâd cwci</title>
 </head>
 
 <body>
-  <div id="header-space"></div>
-  <div class="govuk-width-container">
-    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters">
-          <h1 class="govuk-heading-xl">
-            Sut rydyn ni'n defnyddio cwcis
-          </h1>
-          <p>Ffeil fach yw cwci yr ydym yn ei storio ar eich dyfais am gyfnod byr i wneud i'r gwasanaeth hwn weithio.</p>
-          <p>Trwy barhau i ddefnyddio'r wefan hon, rydych chi'n cytuno i'n defnydd o gwcis.</p>
-          <br>
-          <p>Rydym yn defnyddio cwcis sydd:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>hanfodol - mae'r rhain yn gwneud i'r gwasanaeth weithio, er enghraifft trwy gofio'ch atebion i rai cwestiynau</li>
-            <li>dewisol - ni fydd y rhain yn atal y gwasanaeth rhag gweithio, ond byddant yn rhoi gwybodaeth inni i'n helpu i'w wella</li>
-          </ul>
-          <p>Ni fyddwn yn:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>defnyddiwch unrhyw gwcis hanfodol nes i chi ddefnyddio'r gwasanaeth</li>
-            <li>defnyddiwch unrhyw gwcis dewisol oni bai eich bod yn dweud wrthym y gallwn</li>
-            <li>gallu eich adnabod trwy ddefnyddio cwcis</li>
-          </ul>
-          <p>
-            Am wybodaeth fanylach am y cwcis rydyn ni'n eu defnyddio, gweler ein
-            <span id="cookies-page"></span>
-          </p>
-          <br>
-          <h2 class="govuk-heading-l">Gosodiadau cwci dewisol</h2>
-          <p>Gallwch newid y gosodiadau ar y dudalen hon ar unrhyw adeg.</p>
-          <h3 class="govuk-heading-m"><br>Cwcis dadansoddeg</h3>
-          <p>
-Rydyn ni'n defnyddio meddalwedd dadansoddeg i gael gwybodaeth am sut rydych chi'n defnyddio'r gwasanaeth hwn ac yn ein helpu i'w wella.</p>
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                <h3 class="govuk-fieldset__heading">A allwn ddefnyddio cwcis i'n helpu i wella'r gwasanaeth hwn?</h3>
-              </legend>
-              <div class="govuk-radios govuk-radios--inline">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">
-                  <label class="govuk-label govuk-radios__label" for="analytic-yes">Ie</label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="analytic-no" name="analytic" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="analytic-no">Na</label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <h3 class="govuk-heading-m">Cwcis hysbysebu</h3>
-          <p>Weithiau efallai y byddwn yn defnyddio cwcis sy'n ein helpu gyda'n cyfathrebu a'n marchnata.</p>
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                <h1 class="govuk-fieldset__heading">A allwn ddefnyddio cwcis i'n helpu gyda'n cyfathrebu a'n marchnata?
-                </h1>
-              </legend>
-              <div class="govuk-radios govuk-radios--inline">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="advertising-yes" name="advertising" type="radio" value="yes">
-                  <label class="govuk-label govuk-radios__label" for="advertising-yes">Yes</label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="advertising-no" name="advertising" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="advertising-no">No</label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal"
-            aria-label="Close" onclick="saveAndContinue()">
+    <div id="header-space"></div>
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-three-quarters">
+                    <h1 class="govuk-heading-xl">
+                        Sut rydyn ni'n defnyddio cwcis
+                    </h1>
+                    <p>Ffeil fach yw cwci yr ydym yn ei storio ar eich dyfais am gyfnod byr i wneud i'r gwasanaeth hwn weithio.</p>
+                    <p>Trwy barhau i ddefnyddio'r wefan hon, rydych chi'n cytuno i'n defnydd o gwcis.</p>
+                    <br>
+                    <p>Rydym yn defnyddio cwcis sydd:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>hanfodol - mae'r rhain yn gwneud i'r gwasanaeth weithio, er enghraifft trwy gofio'ch atebion i rai cwestiynau</li>
+                        <li>dewisol - ni fydd y rhain yn atal y gwasanaeth rhag gweithio, ond byddant yn rhoi gwybodaeth inni i'n helpu i'w wella</li>
+                    </ul>
+                    <p>Ni fyddwn yn:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>defnyddiwch unrhyw gwcis hanfodol nes i chi ddefnyddio'r gwasanaeth</li>
+                        <li>defnyddiwch unrhyw gwcis dewisol oni bai eich bod yn dweud wrthym y gallwn</li>
+                        <li>gallu eich adnabod trwy ddefnyddio cwcis</li>
+                    </ul>
+                    <p>
+                        Am wybodaeth fanylach am y cwcis rydyn ni'n eu defnyddio, gweler ein
+                        <span id="cookies-page"></span>
+                    </p>
+                    <br>
+                    <h2 class="govuk-heading-l">Gosodiadau cwci dewisol</h2>
+                    <p>Gallwch newid y gosodiadau ar y dudalen hon ar unrhyw adeg.</p>
+                    <h3 class="govuk-heading-m"><br>Cwcis dadansoddeg</h3>
+                    <p>
+                        Rydyn ni'n defnyddio meddalwedd dadansoddeg i gael gwybodaeth am sut rydych chi'n defnyddio'r gwasanaeth hwn ac yn ein helpu i'w wella.</p>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                <h3 class="govuk-fieldset__heading">A allwn ddefnyddio cwcis i'n helpu i wella'r gwasanaeth hwn?</h3>
+                            </legend>
+                            <div class="govuk-radios govuk-radios--inline">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="analytic-yes" name="analytic" type="radio" value="yes">
+                                    <label class="govuk-label govuk-radios__label" for="analytic-yes">Ie</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="analytic-no" name="analytic" type="radio" value="no">
+                                    <label class="govuk-label govuk-radios__label" for="analytic-no">Na</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="advertising"></div>
+                    <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="saveAndContinue()">
             Arbed a pharhau
           </button>
-        </div>
-      </div>
-    </main>
-  </div>
-  <div id="footer-space"></div>
-  <script src="./js/dwp-cookie-consent.js"></script>
-  <script>
-    window.onload = () => {
-      dismissBanner();
-      initialiseConsentPage();
-    }
-  </script>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="footer-space"></div>
+    <script src="./js/dwp-cookie-consent.js"></script>
+    <script>
+        window.onload = () => {
+            dismissBanner();
+            initialiseConsentPage();
+        }
+    </script>
 </body>
 
 </html>
