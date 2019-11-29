@@ -109,6 +109,7 @@ const changeCookies = () => {
 
 const showBanner = (advertising_question) => {
     let { allow_analytic_cookies, allow_advertising_cookies } = getCookies();
+    console.log(allow_analytic_cookies)
     let banner = `<div id="cookie-banner" style="background-color:white;color:green;padding:10px 200px; border:1px solid black;">`;
     banner += `<h2 style="text-align: center">About your cookies.</h2>`;
     banner += `<p>`
@@ -206,12 +207,12 @@ window.onload = () => {
     document.cookie = `DWP_welsh=${welsh}`;
     document.cookie = `DWP_advertising_question=${advertising_question}`;
     if (!cookiesExist) {
-        goToCookiesPage(advertising_question);
+        goToCookiesPage();
     } else {
         if (welsh) {
             showWelshBanner(advertising_question);
         } else {
-            showBanner();
+            showBanner(advertising_question);
         };
     }
 };
