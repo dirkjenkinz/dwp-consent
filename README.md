@@ -13,37 +13,44 @@ Import the cookie-consent javascript file and (if necessary) the govuk.css file 
     <link rel="stylesheet" type="text/css" href="./css/govuk.css">
 
 
-    Then include the "dwp-consent" class in an element:
+    Then include the "dwp-consent" class in the body  element:
 
-    <div class="dwp-consent">
+    <body class="dwp-consent">
 
 
 ---------------------------------
 
 OPTIONAL PARAMETERS:
 
-The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "dwp-consent-cookiesPage" in the element:
+The cookies page defaults to https://www.gov.uk/help/cookie-details. To override this, include "dwp-consent-cookiesPage" in the body element:
     
-    <div class="dwp-consent dwp-consent-cookies-page="https://www.bbc.co.uk/">
+    <body class="dwp-consent" dwp-consent-cookies-page="https://www.bbc.co.uk/">
 
 
-By default, the retention period for the cookie set by this tool is 28 days. To override this, include "dwp-consent-retention-period=[days] in the element, where [days] = number of days to retain the cookie.
+By default, the retention period for the cookie set by this tool is 28 days. To override this, include "dwp-consent-retention-period=[days] in the body element, where [days] = number of days to retain the cookie.
     
-    <div dwp-consent dwp-consent-retention-period=45>
+    <body class="dwp-consent" dwp-consent-retention-period=45>
 
-By default, no header showing the service name or footer is added to the cookies consent page, as it is expected that this will be done by the app calling the page. However, if a header is required, "service-name=[service]" should be added to the element:
+
+In the rare cases where advertising cookies are used, these can be asked about by adding the "dwp-consent-advertising" class:
+
+    <body class="dwp-consent dwp-consent-advertising">
+
+
+
+By default, no header showing the service name or footer is added to the cookies consent page, as it is expected that this will be done by the app calling the page. However, if a header is required, "service-name=[service]" should be added to the body element:
    
-    <div dwp-consent dwp-consent-service-name="DWP Carers Allowance">
+    <body class="dwp-consent" dwp-consent-service-name="DWP Carers Allowance">
 
 
 To add a footer:
     
-    <div class="dwp-consent dwp-consent-footer">
+    <body class="dwp-consent dwp-consent-footer">
 
 
 To display the page and banner in Welsh, add the "dwp-consent-welsh" class.
     
-    <div class="dwp-consent dwp-consent-welsh">
+    <body class="dwp-consent dwp-consent-welsh">
 
 ---------------------------------
 

@@ -29,6 +29,38 @@ const closePage = () => {
     window.history.back();
 };
 
+const getParameters = () => {
+    let parameters = {
+        retention: 28,
+        cookiesPage: `https://www.gov.uk/help/cookie-details`,
+        footer: false,
+        service: "",
+        welsh: false,
+        advertising_question: false
+
+    };
+    let parms = document.getElementsByClassName(`dwp-consent`);
+    if (parms.length > 0) {
+        let _class = parms[0].getAttribute(`class`);
+        let cookiesPage = parms[0].getAttribute(`dwp-consent-cookies-page`);
+        if (cookiesPage) {
+            parameters.cookiesPage = cookiesPage
+        }
+        parameters.retention = parseInt(parms[0].getAttribute(`dwp-consent-retention-period`)) || 28;
+        parameters.service = parms[0].getAttribute(`dwp-consent-service-name`) || null;
+        if (_class.includes('dwp-consent-add-footer')) {
+            parameters.footer = true;
+        }
+        if (_class.includes('dwp-consent-welsh')) {
+            parameters.welsh = true;
+        }
+        if (_class.includes('dwp-consent-advertising')) {
+            parameters.advertising_question = true;
+        }
+    }
+    return parameters;
+}
+
 const getCookies = () => {
     let cookieDetails = {
         expiry_date: 28,
@@ -54,10 +86,12 @@ const getCookies = () => {
             cookieDetails.advertising_question = true;
         } else if (cookie[0] === `DWP_welsh` && cookie[1] === 'true') {
             cookieDetails.welsh = true;
-        } else if (cookie[0] === `dwp_consent_service`) {
-            cookieDetails.service = cookies[1];
-        } else if (cookie[0] === `dwp_consent_cookies_page`) {
-            cookieDetails.cookies_page = cookies[1];
+        } else if (cookie[0] === `DWP_service`) {
+            cookieDetails.service = cookie[1];
+        } else if (cookie[0] === `DWP_footer`) {
+            cookieDetails.footer = cookie[1];
+        } else if (cookie[0] === `DWP_cookies_page`) {
+            cookieDetails.cookies_page = cookie[1];
         }
     }
     return cookieDetails;
@@ -73,7 +107,7 @@ const changeCookies = () => {
     goToCookiesPage();
 }
 
-const showBanner = () => {
+const showBanner = (advertising_question) => {
     let { allow_analytic_cookies, allow_advertising_cookies } = getCookies();
     let banner = `<div id="cookie-banner" style="background-color:white;color:green;padding:10px 200px; border:1px solid black;">`;
     banner += `<h2 style="text-align: center">About your cookies.</h2>`;
@@ -85,10 +119,12 @@ const showBanner = () => {
     } else {
         banner += `<span style="margin-right:60px">Analytic cookies: Disllowed.</span>`;
     };
-    if (allow_advertising_cookies) {
-        banner += `<span>Advertising cookies: Allowed.</span></p>`;
-    } else {
-        banner += `<span>Advertising cookies: Disallowed.</span></p>`;
+    if (advertising_question) {
+        if (allow_advertising_cookies) {
+            banner += `<span>Advertising cookies: Allowed.</span></p>`;
+        } else {
+            banner += `<span>Advertising cookies: Disallowed.</span></p>`;
+        };
     };
     banner += `<p>Do you wish to change your cookie permissions?`;
     banner += `<button id="change-cookie-permissions" aria-label="Change" onclick="changeCookies()"`;
@@ -106,7 +142,7 @@ const showBanner = () => {
     document.body.innerHTML = banner + document.body.innerHTML;
 }
 
-const showWelshBanner = () => {
+const showWelshBanner = (advertising_question) => {
     let { allow_analytic_cookies, allow_advertising_cookies } = getCookies();
     let banner = `<div id="cookie-banner" style="background-color:white;color:green;padding:10px 100px; border:1px solid black;">`;
     banner += `<h2 style="text-align: center">Ynglŷn â'ch cwcis.</h2>`;
@@ -118,10 +154,12 @@ const showWelshBanner = () => {
     } else {
         banner += `<span style="margin-right:60px">Cwcis dadansoddol: Wedi'i wrthod.</span>`;
     };
-    if (allow_advertising_cookies) {
-        banner += `<span>Cwcis hysbysebu: caniateir.</span></p>`;
-    } else {
-        banner += `<span>Cwcis hysbysebu: Wedi'i wrthod.</span></p>`;
+    if (advertising_question) {
+        if (allow_advertising_cookies) {
+            banner += `<span>Advertising cookies: Allowed.</span></p>`;
+        } else {
+            banner += `<span>Advertising cookies: Disallowed.</span></p>`;
+        };
     };
     banner += `<p>Ydych chi am newid eich caniatâd cwci?`;
     banner += `<button id="change-cookie-permissions" aria-label="Change" onclick="changeCookies()"`;
@@ -149,38 +187,8 @@ const goToCookiesPage = () => {
     dismissBanner();
 }
 
-const getParameters = () => {
-    let parameters = {
-        retention: 28,
-        cookiesPage: `https://www.gov.uk/help/cookie-details`,
-        footer: false,
-        welsh: false,
-        advertising_question: false
-    };
-    let parms = document.getElementsByClassName(`dwp-consent`);
-    if (parms.length > 0) {
-        let _class = parms[0].getAttribute(`class`);
-        let cookiesPage = parms[0].getAttribute(`dwp-consent-cookies-page`);
-        if (cookiesPage) {
-            parameters.cookiesPage = cookiesPage
-        }
-        parameters.retention = parseInt(parms[0].getAttribute(`dwp-consent-retention-period`)) || 28;
-        parameters.serviceName = parms[0].getAttribute(`dwp-consent-service-name`) || null;
-        if (_class.includes('dwp-consent-add-footer')) {
-            parameters.footer = true;
-        }
-        if (_class.includes('dwp-consent-welsh')) {
-            parameters.welsh = true;
-        }
-        if (_class.includes('dwp-consent-advertising')) {
-            parameters.advertising_question = true;
-        }
-    }
-    return parameters;
-}
-
 window.onload = () => {
-    let { retention, cookiesPage, serviceName, footer, welsh, advertising_question } = getParameters();
+    let { retention, cookiesPage, service, footer, welsh, advertising_question } = getParameters();
     let date = new Date();
     date.setDate(date.getDate() + retention);
     let cookiesExist = false;
@@ -193,15 +201,15 @@ window.onload = () => {
     }
     document.cookie = `DWP_expiry_date=${date}`;
     document.cookie = `DWP_cookies_page=${cookiesPage}`;
-    document.cookie = `DWP_service=${serviceName}`;
+    document.cookie = `DWP_service=${service}`;
     document.cookie = `DWP_footer=${footer}`;
     document.cookie = `DWP_welsh=${welsh}`;
     document.cookie = `DWP_advertising_question=${advertising_question}`;
     if (!cookiesExist) {
-        goToCookiesPage();
+        goToCookiesPage(advertising_question);
     } else {
         if (welsh) {
-            showWelshBanner();
+            showWelshBanner(advertising_question);
         } else {
             showBanner();
         };
@@ -240,7 +248,6 @@ const initialiseConsentPage = () => {
 
     let cookiesPageText = `<a href="${cookies_page}" target="_blank" rel="noreferrer noopener" title="Go to our cookies information page">Cookies page</a>.`
     document.getElementById(`cookies-page`).innerHTML = cookiesPageText;
-
 
     if (service !== null) {
         buildHeader(service);
