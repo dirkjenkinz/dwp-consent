@@ -5,7 +5,6 @@
     <title>Cookie Consent</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="./css/govuk.css">
-    <script src="./js/dwp-cookie-consent.js"></script>
     <style>
         #clear,
         #reload {
@@ -17,7 +16,8 @@
     </style>
 </head>
 
-<body class="dwp-consent dwp-consent-add-footer dwp-consent-advertising" dwp-consent-service-name="Make a Claim for Carer's Allowance">
+<body>
+    </div>
     <header class="govuk-header " role="banner" data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container">
             <div class="govuk-header__logo">
@@ -47,46 +47,36 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-three-quarters">
                     <h1 class="govuk-heading-l">
-                        Can you get Carer's Allowance?
+                        Your place of residence
                     </h1>
                     <br>
-                    <h2 class="govuk-heading-m">What benefit does the person you're caring for get?</h2>
+                    <h2 class="govuk-heading-m">Where do you live?</h2>
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-radios govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="dummy-1" name="dummy" type="radio" value="pip">
-                                    <label class="govuk-label govuk-radios__label" for="dummy-1">Personal Independence Payment
-                      (PIP)</label>
+                                    <input class="govuk-radios__input" id="where-5" name="where" type="radio" value="home">
+                                    <label class="govuk-label govuk-radios__label" for="where-5">England, Scotland or Wales</label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="dummy-2" name="dummy" type="radio" value="dla">
-                                    <label class="govuk-label govuk-radios__label" for="dummy-2">Disability Living Allowance (DLA)
-                    </label>
+                                    <input class="govuk-radios__input" id="where-6" name="where" type="radio" value="ni">
+                                    <label class="govuk-label govuk-radios__label" for="where-6">Northern Ireland</label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="dummy-3" name="dummy" type="radio" value="aa">
-                                    <label class="govuk-label govuk-radios__label" for="dummy-3">Attendance Allowance (AA)</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="dummy-4" name="dummy" type="radio" value="none">
-                                    <label class="govuk-label govuk-radios__label" for="dummy-4">None of these benefits</label>
+                                    <input class="govuk-radios__input" id="where-7" name="where" type="radio" value="aa">
+                                    <label class="govuk-label govuk-radios__label" for="where-7">Elsewhere</label>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-                    <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="next()">
+                    <button class="govuk-button" data-module="govuk-button" id="save-and-close" data-dismiss="modal" aria-label="Close" onclick="saveAndContinue()">
               Next
             </button>
                 </div>
             </div>
         </main>
     </div>
-    <script>
-      const next = () => {
-        window.open(`./demo2.html`, `_self`);
-      }
-    </script>
+
 </body>
 
 </html>
