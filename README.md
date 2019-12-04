@@ -4,7 +4,7 @@ Run demo.html to see it in action.
 
 ---------------------------------
 
-To get started:
+TO GET STARTED:
 
 Import the cookie-consent javascript file and (if necessary) the govuk.css file and add them to the html of the calling page:
     
@@ -37,9 +37,14 @@ In the rare cases where advertising cookies are used, these can be asked about b
     <body class="dwp-consent dwp-consent-advertising">
 
 
-To display the page and banner in Welsh, add the "dwp-consent-welsh" class.
+To display the page and banner in Welsh, add the "dwp-consent-welsh" class:
     
     <body class="dwp-consent dwp-consent-welsh">
+
+
+Normally, the cookies banner will only appear on the first page of the app that the user lands on. To force it to appear on a page regardless of whether or not it's the first one visited, use "dwp-consent-force":
+
+    <body class="dwp-consent dwp-consent-force">
 
 ---------------------------------
 

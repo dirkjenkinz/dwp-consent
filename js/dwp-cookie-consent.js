@@ -34,8 +34,8 @@ const getParameters = () => {
         retention: 28,
         cookiesPage: `https://www.gov.uk/help/cookie-details`,
         welsh: false,
-        advertising_question: false
-
+        advertising_question: false,
+        force: false
     };
     let parms = document.getElementsByClassName(`dwp-consent`);
     if (parms.length > 0) {
@@ -54,12 +54,16 @@ const getParameters = () => {
         if (_class.includes('dwp-consent-advertising')) {
             parameters.advertising_question = true;
         }
+        if (_class.includes('dwp-consent-force')) {
+            parameters.force = true;
+        }
     }
     return parameters;
 }
 
 const getCookies = () => {
     let cookieDetails = {
+        landed: false,
         expiry_date: 28,
         advertising_question: false,
         welsh: false,
@@ -71,7 +75,9 @@ const getCookies = () => {
     let cookies = document.cookie.split(`;`);
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim().split(`=`);
-        if (cookie[0] === `DWP_allow_analytic_cookies` && cookie[1] === 'true') {
+        if (cookie[0] === `DWP_landed`){
+            cookieDetails.landed = true;
+        } else if (cookie[0] === `DWP_allow_analytic_cookies` && cookie[1] === 'true') {
             cookieDetails.allow_analytic_cookies = true;
         } else if (cookie[0] === `DWP_allow_advertising_cookies` && cookie[1] === 'true') {
             cookieDetails.allow_advertising_cookies = true;
@@ -163,29 +169,35 @@ const goToCookiesPage = () => {
 }
 
 window.onload = () => {
-    let { retention, cookiesPage, welsh, advertising_question } = getParameters();
-    let date = new Date();
-    date.setDate(date.getDate() + retention);
-    let cookiesExist = false;
-    let cookies = document.cookie.split(`;`);
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.substring(0, 3) === 'DWP') {
-            cookiesExist = true;
+    let { retention, cookiesPage, welsh, advertising_question, force } = getParameters();
+    let {landed} = getCookies();
+    console.log(landed, force)
+    if (!landed || force) {
+      console.log('1.')
+        let date = new Date();
+        document.cookie = `DWP_landed=${date}`;
+        date.setDate(date.getDate() + retention);
+        let cookiesExist = false;
+        let cookies = document.cookie.split(`;`);
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            if (cookie.substring(0, 3) === 'DWP') {
+                cookiesExist = true;
+            }
         }
-    }
-    document.cookie = `DWP_expiry_date=${date}`;
-    document.cookie = `DWP_cookies_page=${cookiesPage}`;
-    document.cookie = `DWP_welsh=${welsh}`;
-    document.cookie = `DWP_advertising_question=${advertising_question}`;
-    if (!cookiesExist) {
-        goToCookiesPage();
-    } else {
-        if (welsh) {
-            showWelshBanner(advertising_question);
+        document.cookie = `DWP_expiry_date=${date}`;
+        document.cookie = `DWP_cookies_page=${cookiesPage}`;
+        document.cookie = `DWP_welsh=${welsh}`;
+        document.cookie = `DWP_advertising_question=${advertising_question}`;
+        if (!cookiesExist) {
+            goToCookiesPage();
         } else {
-            showBanner(advertising_question);
-        };
+            if (welsh) {
+                showWelshBanner(advertising_question);
+            } else {
+                showBanner(advertising_question);
+            };
+        }
     }
 };
 
