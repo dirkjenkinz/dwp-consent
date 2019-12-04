@@ -37,17 +37,6 @@ In the rare cases where advertising cookies are used, these can be asked about b
     <body class="dwp-consent dwp-consent-advertising">
 
 
-
-By default, no header showing the service name or footer is added to the cookies consent page, as it is expected that this will be done by the app calling the page. However, if a header is required, "service-name=[service]" should be added to the body element:
-   
-    <body class="dwp-consent" dwp-consent-service-name="DWP Carers Allowance">
-
-
-To add a footer:
-    
-    <body class="dwp-consent dwp-consent-footer">
-
-
 To display the page and banner in Welsh, add the "dwp-consent-welsh" class.
     
     <body class="dwp-consent dwp-consent-welsh">
@@ -60,12 +49,11 @@ The pop-up explains our use of cookies and asks for permission to set cookies fo
 The default in both theses cases is 'no'.
 Responses are recorded as true and force in cookie and the popup disappears.
 
-If there are DWP cookies already, a banner appears at the top of the page telling the user what permissions are set and offering the chance to change them 
+If there are DWP cookies already, a banner appears at the top of the page offering the user the opportunity to change their cookie permissions
 
 ----------------------------------
 
 The cookies are:
-
 
     DWP_allow_essential_cookies
     DWP_allow_advertising_cookies - set to true if permission to use advertising cookies is given
